@@ -2,18 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  .hero {
-    @apply w-full text-red-600;
-  }
+html,
+body,
+#__next {
+  scroll-behavior: smooth;
+
+  height: 100%;
 }
 
-.title {
-  @apply m-0 w-full pt-20;
-  font-size: 48px;
+.navlink::after {
+  content: "";
+  @apply w-0 border-b-4 border-orange absolute left-0 h-1 bottom-0 transition-all duration-300;
 }
 
-.title,
-.description {
-  @apply text-center;
+.navlink.--active::after {
+  @apply w-full;
+}
+
+button:focus,
+a:focus {
+  outline: none;
+}
+
+.section-image::before {
+  @apply grayscale filter drop-shadow-2xl bg-khale-full bg-cover bg-no-repeat block absolute h-full w-full bg-top;
+  z-index: -1;
+  background-attachment: fixed;
+  content: "";
 }
