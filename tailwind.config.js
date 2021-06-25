@@ -8,10 +8,14 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     colors: {
-      orange: "#ff6a13",
+      orange: {
+        light: "#ff9c48",
+        DEFAULT: "#ff6a13",
+        dark: "#c43800",
+      },
       transparent: "transparent",
       current: "currentColor",
-      black: colors.black,
+      black: "#131313",
       white: colors.white,
       gray: colors.trueGray,
       indigo: colors.indigo,
@@ -33,5 +37,8 @@ module.exports = {
       borderWidth: ["target"],
     },
   },
-  plugins: [],
+  corePlugins: {
+    scale: true,
+  },
+  plugins: [require("@tailwindcss/line-clamp")],
 }

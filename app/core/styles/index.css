@@ -10,6 +10,10 @@ body,
   height: 100%;
 }
 
+* {
+  @apply text-white;
+}
+
 .navlink::after {
   content: "";
   @apply w-0 border-b-4 border-orange absolute left-0 h-1 bottom-0 transition-all duration-300;
@@ -24,8 +28,12 @@ a:focus {
   outline: none;
 }
 
+.main-bg {
+  @apply bg-gradient-to-r from-black to-gray-900;
+}
+
 .section-image::before {
-  @apply grayscale filter drop-shadow-2xl bg-khale-full bg-cover bg-no-repeat block absolute h-full w-full bg-top;
+  @apply grayscale filter drop-shadow-2xl bg-khale-full bg-auto bg-no-repeat block absolute h-full w-full bg-top;
   z-index: -1;
   background-attachment: fixed;
   content: "";

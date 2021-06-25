@@ -14,11 +14,11 @@ interface NavbarProps {
   className?: string
 }
 
-const Navbar: FC<NavbarProps> = () => {
+const Navbar: FC<NavbarProps> = ({ className }) => {
   const query = useRouter()
 
   return (
-    <nav className={"md:flex hidden items-center justify-evenly w-1/2 xl:w-4/12"}>
+    <nav className={"md:flex hidden items-center justify-evenly md:w-1/2 lg:w-5/12 " + className}>
       {links.map((link) => (
         <Link key={link.value} href={"#" + link.value}>
           <a

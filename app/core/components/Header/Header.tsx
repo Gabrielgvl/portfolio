@@ -21,7 +21,7 @@ const Header: FC = () => {
   }, [])
 
   const classes = {
-    "bg-orange": !isTop,
+    "main-bg": !isTop,
     "h-16": isTop,
     "h-12": !isTop,
   }
