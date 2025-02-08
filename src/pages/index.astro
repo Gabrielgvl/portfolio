@@ -1,6 +1,10 @@
 ---
 import '../styles/global.css';
 import Layout from '../layouts/Layout.astro';
+import { t, l } from 'astro-i18n';
+
+// Force server-side rendering for this page
+export const prerender = false;
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/basics/astro-components/
@@ -17,8 +21,8 @@ import Layout from '../layouts/Layout.astro';
 
   <body>
     <Layout
-      title="Gabriel Lima | Desenvolvedor Full Stack & Consultor de Software"
-      description="Desenvolvedor Full Stack especializado em criar soluções web modernas, escaláveis e de alta performance. Consultoria em arquitetura de software e desenvolvimento ágil."
+      title={t('meta.title')}
+      description={t('meta.description')}
     >
       <!-- Hero Section -->
       <section
@@ -26,25 +30,24 @@ import Layout from '../layouts/Layout.astro';
       >
         <div class="container mx-auto px-4 text-center">
           <h1 class="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6">
-            Transformando Ideias em
-            <span class="text-primary-600 dark:text-primary-400">Soluções Digitais</span>
+            {t('hero.title')}
+            <span class="text-primary-600 dark:text-primary-400">{t('hero.title_highlight')}</span>
           </h1>
           <p class="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
-            Desenvolvimento Full Stack & Consultoria em Software para empresas que buscam excelência
-            técnica e resultados excepcionais.
+            {t('hero.description')}
           </p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="/contato"
+              href={l('/contact')}
               class="inline-flex items-center justify-center px-8 py-3 text-base font-medium rounded-lg text-white bg-primary-600 hover:bg-primary-700 transition-colors"
             >
-              Iniciar Projeto
+              {t('cta.start')}
             </a>
             <a
-              href="/portfolio"
+              href={l('/portfolio')}
               class="inline-flex items-center justify-center px-8 py-3 text-base font-medium rounded-lg text-primary-600 bg-white hover:bg-gray-50 transition-colors"
             >
-              Ver Portfólio
+              {t('cta.portfolio')}
             </a>
           </div>
         </div>
@@ -56,7 +59,7 @@ import Layout from '../layouts/Layout.astro';
           <h2
             class="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-12"
           >
-            Serviços Especializados
+            {t('services.title')}
           </h2>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
@@ -77,11 +80,10 @@ import Layout from '../layouts/Layout.astro';
                 </svg>
               </div>
               <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                Desenvolvimento Full Stack
+                {t('services.fullstack.title')}
               </h3>
               <p class="text-gray-600 dark:text-gray-400">
-                Criação de aplicações web completas, desde o frontend até o backend, com foco em
-                performance e escalabilidade.
+                {t('services.fullstack.description')}
               </p>
             </div>
             <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
@@ -103,11 +105,10 @@ import Layout from '../layouts/Layout.astro';
                 </svg>
               </div>
               <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                Consultoria Técnica
+                {t('services.consulting.title')}
               </h3>
               <p class="text-gray-600 dark:text-gray-400">
-                Orientação estratégica em arquitetura de software, escolha de tecnologias e melhores
-                práticas de desenvolvimento.
+                {t('services.consulting.description')}
               </p>
             </div>
             <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
@@ -128,11 +129,10 @@ import Layout from '../layouts/Layout.astro';
                 </svg>
               </div>
               <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                Otimização de Performance
+                {t('services.optimization.title')}
               </h3>
               <p class="text-gray-600 dark:text-gray-400">
-                Análise e implementação de melhorias para aumentar a velocidade e eficiência de
-                aplicações existentes.
+                {t('services.optimization.description')}
               </p>
             </div>
           </div>
@@ -143,17 +143,16 @@ import Layout from '../layouts/Layout.astro';
       <section class="py-20 bg-primary-600 dark:bg-primary-900">
         <div class="container mx-auto px-4 text-center">
           <h2 class="text-3xl md:text-4xl font-bold text-white mb-8">
-            Pronto para transformar seu projeto em realidade?
+            {t('cta.title')}
           </h2>
           <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
-            Entre em contato para discutirmos como posso ajudar a alcançar seus objetivos
-            tecnológicos.
+            {t('cta.description')}
           </p>
           <a
-            href="/contato"
+            href={l('/contact')}
             class="inline-flex items-center justify-center px-8 py-3 text-base font-medium rounded-lg text-primary-600 bg-white hover:bg-gray-50 transition-colors"
           >
-            Agendar Consulta Gratuita
+            {t('cta.button')}
           </a>
         </div>
       </section>

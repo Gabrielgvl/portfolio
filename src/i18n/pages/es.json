@@ -1,0 +1,24 @@
+{
+  "home": {
+    "services": {
+      "title": "Servicios Especializados",
+      "fullstack": {
+        "title": "Desarrollo Full Stack",
+        "description": "Creación de aplicaciones web completas, desde el frontend hasta el backend, con enfoque en rendimiento y escalabilidad."
+      },
+      "consulting": {
+        "title": "Consultoría Técnica",
+        "description": "Orientación estratégica en arquitectura de software, elección de tecnologías y mejores prácticas de desarrollo."
+      },
+      "optimization": {
+        "title": "Optimización de Rendimiento",
+        "description": "Análisis e implementación de mejoras para aumentar la velocidad y eficiencia de aplicaciones existentes."
+      }
+    },
+    "cta": {
+      "title": "¿Listo para transformar tu proyecto en realidad?",
+      "description": "Contáctame para discutir cómo puedo ayudarte a alcanzar tus objetivos tecnológicos.",
+      "button": "Programar Consulta Gratuita"
+    }
+  }
+} 

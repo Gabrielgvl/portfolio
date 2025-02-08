@@ -1,0 +1,59 @@
+---
+import { astroI18n, l } from 'astro-i18n';
+
+interface Props {
+  showCurrent: boolean;
+  labels: {
+    [locale: string]: string;
+  };
+}
+
+const { showCurrent = true, labels = {} } = Astro.props;
+
+const params: Record<string, string> = {};
+for (const [key, value] of Object.entries(Astro.params)) {
+  if (value === undefined) continue;
+  params[key] = String(value);
+}
+
+let links = astroI18n.locales.map((locale) => ({
+  locale,
+  href: l(Astro.url.pathname, params, {
+    targetLocale: locale,
+  }),
+  label: labels[locale] || locale.toUpperCase(),
+}));
+
+if (!showCurrent) {
+  links = links.filter((link) => link.locale !== astroI18n.locale);
+}
+---
+
+<div class="relative group">
+  <button
+    type="button"
+    class="flex items-center space-x-1 text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400"
+    aria-haspopup="true"
+  >
+    <span>🌐</span>
+  </button>
+
+  <div class="absolute right-0 pt-2 w-48">
+    <div
+      class="rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 transform opacity-0 scale-95 invisible group-hover:opacity-100 group-hover:scale-100 group-hover:visible transition-all duration-200 ease-in-out origin-top-right"
+    >
+      <div class="py-1">
+        {
+          links.map((link) => (
+            <a
+              href={link.href}
+              class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
+            >
+              {link.label}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</div>

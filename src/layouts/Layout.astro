@@ -1,18 +1,20 @@
 ---
 import Navigation from '../components/Navigation.astro';
 import '../styles/global.css';
+import { astroI18n, t } from 'astro-i18n';
 
 interface Props {
   title: string;
   description?: string;
 }
 
-const { title, description = 'Gabriel Lima - Desenvolvedor Full Stack & Consultor de Software' } =
-  Astro.props;
+const { title, description = t('description') } = Astro.props;
+
+const currentLocale = astroI18n.locale;
 ---
 
 <!doctype html>
-<html lang="pt-BR">
+<html lang={currentLocale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -22,11 +24,11 @@ const { title, description = 'Gabriel Lima - Desenvolvedor Full Stack & Consulto
     <meta name="description" content={description} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-
     <script is:inline>
       if (
         localStorage.getItem('color-theme') === 'dark' ||
@@ -56,14 +58,14 @@ const { title, description = 'Gabriel Lima - Desenvolvedor Full Stack & Consulto
       <div class="container mx-auto px-4 py-8">
         <div class="flex flex-col md:flex-row justify-between items-center">
           <div class="text-gray-600 dark:text-gray-400 mb-4 md:mb-0">
-            © {new Date().getFullYear()} Gabriel Lima. Todos os direitos reservados.
+            © {new Date().getFullYear()} {t('footer.copyright')}
           </div>
           <div class="flex items-center space-x-6">
             <a
               href="mailto:gvl_br@yahoo.com.br"
               class="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400"
             >
-              Email
+              {t('footer.email')}
             </a>
             <a
               href="https://linkedin.com/in/gabriel-vinhaes"
@@ -71,7 +73,7 @@ const { title, description = 'Gabriel Lima - Desenvolvedor Full Stack & Consulto
               rel="noopener noreferrer"
               class="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400"
             >
-              LinkedIn
+              {t('footer.linkedin')}
             </a>
           </div>
         </div>

@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
+import { t, l } from 'astro-i18n';
 import profileImage from '../assets/profile.png';
 
 const skills = {
@@ -111,17 +112,18 @@ const certifications = [
 ---
 
 <Layout
-  title="Sobre | Gabriel Lima - Desenvolvedor Full Stack"
-  description="Conheça mais sobre minha experiência, habilidades e trajetória profissional como desenvolvedor full stack e consultor de software."
+  title={t('meta.title')}
+  description={t('meta.description')}
 >
   <div class="container mx-auto px-4 py-16">
     <div class="max-w-4xl mx-auto">
       <!-- Hero Section -->
       <div class="text-center mb-16">
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">Sobre Mim</h1>
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          {t('hero.title')}
+        </h1>
         <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-          Desenvolvedor Full Stack apaixonado por criar soluções inovadoras e compartilhar
-          conhecimento.
+          {t('hero.description')}
         </p>
       </div>
 
@@ -141,23 +143,17 @@ const certifications = [
               <div
                 class="uppercase tracking-wide text-sm text-primary-600 dark:text-primary-400 font-semibold"
               >
-                Desenvolvedor Full Stack & Consultor Internacional
+                {t('experience.title')}
               </div>
               <p class="mt-2 text-gray-600 dark:text-gray-400">
-                Engenheiro de software altamente versátil com mais de 5 anos de experiência em
-                desenvolvimento full-stack e liderança técnica. Especializado em criar soluções
-                inovadoras para empresas nacionais e internacionais de grande porte como Mercado
-                Livre, Varsity Tutors e Ambev Tech. Experiência sólida em desenvolvimento de
-                sistemas críticos, machine learning e otimização de performance. Além da atuação na
-                indústria, compartilha conhecimento como professor universitário, contribuindo para
-                a formação da próxima geração de profissionais de tecnologia.
+                {t('experience.description')}
               </p>
               <div class="mt-4">
                 <a
-                  href="/contato"
+                  href={l('/contact')}
                   class="inline-flex items-center text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300"
                 >
-                  Vamos conversar →
+                  {t('cta.contact')} →
                 </a>
               </div>
             </div>
@@ -167,13 +163,13 @@ const certifications = [
 
       <!-- Skills Section -->
       <div class="mb-16">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8">Habilidades Técnicas</h2>
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8">{t('skills.title')}</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           {
             Object.entries(skills).map(([category, items]) => (
               <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white capitalize mb-4">
-                  {category}
+                  {t(`skills.${category}`)}
                 </h3>
                 <div class="flex flex-wrap gap-2">
                   {items.map((item) => (
@@ -191,7 +187,7 @@ const certifications = [
       <!-- Experience Section -->
       <div class="mb-16">
         <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8">
-          Experiência Profissional
+          {t('experience.title')}
         </h2>
         <div class="space-y-8">
           {
@@ -219,7 +215,7 @@ const certifications = [
       <!-- Education & Certifications -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8">Formação Acadêmica</h2>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8">{t('education.title')}</h2>
           <div class="space-y-6">
             {
               education.map((edu) => (
@@ -236,7 +232,7 @@ const certifications = [
         </div>
 
         <div>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8">Certificações</h2>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8">{t('certifications.title')}</h2>
           <div class="space-y-6">
             {
               certifications.map((cert) => (

@@ -1,16 +1,25 @@
 ---
+import { t, l, astroI18n } from 'astro-i18n';
+import LocaleSwitcher from './LocaleSwitcher.astro';
+
 const navItems = [
-  { href: '/', text: 'Home' },
-  { href: '/portfolio', text: 'Portfólio' },
-  { href: '/blog', text: 'Blog' },
-  { href: '/sobre', text: 'Sobre' },
-  { href: '/contato', text: 'Contato' },
+  { href: l('/'), text: t('nav.home') },
+  { href: l('/portfolio'), text: t('nav.portfolio') },
+  { href: l('/blog'), text: t('nav.blog') },
+  { href: l('/about'), text: t('nav.about') },
+  { href: l('/contact'), text: t('nav.contact') },
+];
+
+const languages = [
+  { href: l(astroI18n.route, { targetLocale: 'en' }), name: 'English' },
+  { href: l(astroI18n.route, { targetLocale: 'pt' }), name: 'Português' },
+  { href: l(astroI18n.route, { targetLocale: 'es' }), name: 'Español' },
 ];
 ---
 
 <nav class="relative flex items-center justify-between h-16">
   <div class="flex items-center flex-shrink-0">
-    <a href="/" class="text-xl font-bold text-gray-900 dark:text-white"> Gabriel Lima </a>
+    <a href={l('/')} class="text-xl font-bold text-gray-900 dark:text-white"> Gabriel Lima </a>
   </div>
 
   <!-- Desktop Navigation -->
@@ -25,6 +34,14 @@ const navItems = [
         </a>
       ))
     }
+    
+    <!-- Language Switcher -->
+    <LocaleSwitcher showCurrent labels={{
+      en: 'English',
+      pt: 'Português',
+      es: 'Español',
+    }} />
+
     <button
       id="theme-toggle"
       class="p-2 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white rounded-lg"
@@ -58,7 +75,7 @@ const navItems = [
       aria-controls="mobile-menu"
       aria-expanded="false"
     >
-      <span class="sr-only">Abrir menu principal</span>
+      <span class="sr-only">Open main menu</span>
       <svg
         class="block h-6 w-6"
         xmlns="http://www.w3.org/2000/svg"
@@ -94,73 +111,3 @@ const navItems = [
     </div>
   </div>
 </nav>
-
-<script>
-  function initTheme() {
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
-
-    if (!themeToggleBtn || !themeToggleDarkIcon || !themeToggleLightIcon) return;
-
-    // Change the icons inside the button based on previous settings
-    if (
-      localStorage.getItem('color-theme') === 'dark' ||
-      (!('color-theme' in localStorage) &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
-      themeToggleLightIcon.classList.remove('hidden');
-    } else {
-      themeToggleDarkIcon.classList.remove('hidden');
-    }
-
-    themeToggleBtn.addEventListener('click', function () {
-      // Toggle icons
-      themeToggleDarkIcon.classList.toggle('hidden');
-      themeToggleLightIcon.classList.toggle('hidden');
-
-      // If is set in localStorage
-      if (localStorage.getItem('color-theme')) {
-        if (localStorage.getItem('color-theme') === 'light') {
-          document.documentElement.classList.add('dark');
-          localStorage.setItem('color-theme', 'dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-          localStorage.setItem('color-theme', 'light');
-        }
-      } else {
-        if (document.documentElement.classList.contains('dark')) {
-          document.documentElement.classList.remove('dark');
-          localStorage.setItem('color-theme', 'light');
-        } else {
-          document.documentElement.classList.add('dark');
-          localStorage.setItem('color-theme', 'dark');
-        }
-      }
-    });
-  }
-
-  // Initialize theme on page load
-  initTheme();
-
-  // Re-initialize theme after page transitions
-  document.addEventListener('astro:after-swap', initTheme);
-
-  // Mobile menu toggle
-  function initMobileMenu() {
-    const mobileMenuButton = document.querySelector('.mobile-menu-button');
-    const mobileMenu = document.querySelector('.mobile-menu');
-
-    if (!mobileMenuButton || !mobileMenu) return;
-
-    mobileMenuButton.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-  }
-
-  // Initialize mobile menu on page load
-  initMobileMenu();
-
-  // Re-initialize mobile menu after page transitions
-  document.addEventListener('astro:after-swap', initMobileMenu);
-</script>

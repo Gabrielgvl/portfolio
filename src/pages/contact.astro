@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { t } from 'astro-i18n';
 import EmailIcon from '../components/icons/EmailIcon.astro';
 import LinkedInIcon from '../components/icons/LinkedInIcon.astro';
 import GitHubIcon from '../components/icons/GitHubIcon.astro';
@@ -26,15 +27,14 @@ const contactOptions = [
 ];
 ---
 
-<Layout title="Contato | Gabriel Lima">
+<Layout title={t('meta.title')}>
   <div class="container mx-auto px-4 py-16">
     <div class="max-w-4xl mx-auto">
       <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-        Vamos Conversar?
+        {t('hero.title')}
       </h1>
       <p class="text-xl text-gray-600 dark:text-gray-400 mb-12 text-center max-w-2xl mx-auto">
-        Estou sempre aberto a novas oportunidades e parcerias. Escolha a forma que preferir para
-        entrar em contato.
+        {t('hero.description')}
       </p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -60,17 +60,16 @@ const contactOptions = [
 
       <div class="mt-16 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
         <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-          Disponibilidade para Projetos
+          {t('form.availability.title')}
         </h2>
-        <p class="text-gray-600 dark:text-gray-400 mb-4">Atualmente estou disponível para:</p>
+        <p class="text-gray-600 dark:text-gray-400 mb-4">{t('form.availability.description')}</p>
         <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400 mb-6">
-          <li>Consultoria em desenvolvimento de software</li>
-          <li>Projetos de desenvolvimento full stack</li>
-          <li>Mentorias técnicas</li>
-          <li>Palestras e workshops</li>
+          {t('form.availability.services').split(',').map((service) => (
+            <li>{service.trim()}</li>
+          ))}
         </ul>
         <p class="text-gray-600 dark:text-gray-400">
-          Responderei sua mensagem o mais breve possível, geralmente dentro de 24 horas úteis.
+          {t('form.availability.response_time')}
         </p>
       </div>
     </div>

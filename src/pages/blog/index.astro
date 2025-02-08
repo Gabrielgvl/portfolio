@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { Image } from 'astro:assets';
+import { t, l } from 'astro-i18n';
 import avatarImage from '../../assets/avatar.png';
 
 const posts = [
@@ -43,8 +44,8 @@ const tags = [...new Set(posts.flatMap((post) => post.tags))];
 ---
 
 <Layout
-  title="Blog | Gabriel Lima - Desenvolvedor Full Stack"
-  description="Artigos técnicos sobre desenvolvimento web, arquitetura de software, boas práticas e tecnologias modernas."
+  title={t('meta.title')}
+  description={t('meta.description')}
 >
   <div class="container mx-auto px-4 py-16">
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
@@ -52,13 +53,15 @@ const tags = [...new Set(posts.flatMap((post) => post.tags))];
       <aside class="lg:col-span-1">
         <div class="sticky top-24">
           <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-8">
-            <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Categorias</h2>
+            <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+              {t('categories.title')}
+            </h2>
             <ul class="space-y-2">
               {
                 categories.map((category) => (
                   <li>
                     <a
-                      href={`/blog/categoria/${category.toLowerCase()}`}
+                      href={l(`/blog/categoria/${category.toLowerCase()}`)}
                       class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400"
                     >
                       {category}
@@ -70,12 +73,14 @@ const tags = [...new Set(posts.flatMap((post) => post.tags))];
           </div>
 
           <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-            <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Tags</h2>
+            <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+              {t('tags.title')}
+            </h2>
             <div class="flex flex-wrap gap-2">
               {
                 tags.map((tag) => (
                   <a
-                    href={`/blog/tag/${tag.toLowerCase()}`}
+                    href={l(`/blog/tag/${tag.toLowerCase()}`)}
                     class="px-3 py-1 text-sm bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200 rounded-full hover:bg-primary-200 dark:hover:bg-primary-800 transition-colors"
                   >
                     {tag}
@@ -89,7 +94,9 @@ const tags = [...new Set(posts.flatMap((post) => post.tags))];
 
       <!-- Main Content -->
       <main class="lg:col-span-3">
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-8">Blog</h1>
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-8">
+          {t('hero.title')}
+        </h1>
 
         <div class="space-y-8">
           {
@@ -97,13 +104,15 @@ const tags = [...new Set(posts.flatMap((post) => post.tags))];
               <article class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
                 <div class="p-6">
                   <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
-                    <span>{format(post.publishDate, 'dd MMMM, yyyy', { locale: ptBR })}</span>
+                    <span>
+                      {t('posts.published_on')} {format(post.publishDate, 'dd MMMM, yyyy', { locale: ptBR })}
+                    </span>
                     <span class="mx-2">•</span>
                     <span>{post.category}</span>
                   </div>
                   <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                     <a
-                      href={`/blog/${post.slug}`}
+                      href={l(`/blog/${post.slug}`)}
                       class="hover:text-primary-600 dark:hover:text-primary-400"
                     >
                       {post.title}
@@ -120,10 +129,10 @@ const tags = [...new Set(posts.flatMap((post) => post.tags))];
                       <span class="text-sm text-gray-600 dark:text-gray-400">{post.author}</span>
                     </div>
                     <a
-                      href={`/blog/${post.slug}`}
+                      href={l(`/blog/${post.slug}`)}
                       class="text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 font-medium"
                     >
-                      Ler mais →
+                      {t('posts.read_more')} →
                     </a>
                   </div>
                 </div>
