@@ -1,0 +1,81 @@
+---
+import Navigation from '../components/Navigation.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Gabriel Lima - Desenvolvedor Full Stack & Consultor de Software' } =
+  Astro.props;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script is:inline>
+      if (
+        localStorage.getItem('color-theme') === 'dark' ||
+        (!('color-theme' in localStorage) &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+  </head>
+  <body class="bg-white dark:bg-gray-900">
+    <header
+      class="fixed w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm z-50 border-b border-gray-200 dark:border-gray-800"
+    >
+      <div class="container mx-auto px-4">
+        <Navigation />
+      </div>
+    </header>
+
+    <main class="pt-16">
+      <slot />
+    </main>
+
+    <footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+      <div class="container mx-auto px-4 py-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="text-gray-600 dark:text-gray-400 mb-4 md:mb-0">
+            © {new Date().getFullYear()} Gabriel Lima. Todos os direitos reservados.
+          </div>
+          <div class="flex items-center space-x-6">
+            <a
+              href="mailto:gvl_br@yahoo.com.br"
+              class="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400"
+            >
+              Email
+            </a>
+            <a
+              href="https://linkedin.com/in/gabriel-vinhaes"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400"
+            >
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

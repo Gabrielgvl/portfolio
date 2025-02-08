@@ -1,10 +1,32 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import tailwindcss from '@tailwindcss/vite';
+import mdx from '@astrojs/mdx';
+import sitemap from '@astrojs/sitemap';
+import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-	vite: {
-		plugins: [tailwindcss()]
-	}
+  site: 'https://seu-dominio.com', // Atualize com seu domínio real
+  integrations: [
+    mdx(),
+    sitemap(),
+    tailwind({
+      applyBaseStyles: false,
+    }),
+  ],
+  markdown: {
+    shikiConfig: {
+      theme: 'dracula',
+      wrap: true,
+    },
+  },
+  compressHTML: true,
+  build: {
+    assets: 'assets',
+  },
+  image: {
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+    },
+  },
 });

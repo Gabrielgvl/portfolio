@@ -1,0 +1,137 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
+import { Image } from 'astro:assets';
+import avatarImage from '../../assets/avatar.png';
+
+const posts = [
+  {
+    title: 'Como Criar uma API REST com Node.js e Express',
+    slug: 'criar-api-rest-nodejs-express',
+    excerpt:
+      'Aprenda a criar uma API REST completa utilizando Node.js e Express, com autenticação JWT e documentação Swagger.',
+    publishDate: new Date('2024-02-01'),
+    author: 'Gabriel Lima',
+    category: 'Backend',
+    tags: ['Node.js', 'Express', 'API', 'REST'],
+  },
+  {
+    title: 'Otimizando Performance em Aplicações React',
+    slug: 'otimizando-performance-react',
+    excerpt:
+      'Dicas e técnicas avançadas para melhorar a performance de suas aplicações React, incluindo code splitting e lazy loading.',
+    publishDate: new Date('2024-01-15'),
+    author: 'Gabriel Lima',
+    category: 'Frontend',
+    tags: ['React', 'Performance', 'JavaScript'],
+  },
+  {
+    title: 'Microsserviços com Docker e Kubernetes',
+    slug: 'microsservicos-docker-kubernetes',
+    excerpt:
+      'Um guia completo sobre como desenvolver e implantar arquiteturas de microsserviços usando Docker e Kubernetes.',
+    publishDate: new Date('2024-01-01'),
+    author: 'Gabriel Lima',
+    category: 'DevOps',
+    tags: ['Docker', 'Kubernetes', 'Microsserviços'],
+  },
+];
+
+const categories = [...new Set(posts.map((post) => post.category))];
+const tags = [...new Set(posts.flatMap((post) => post.tags))];
+---
+
+<Layout
+  title="Blog | Gabriel Lima - Desenvolvedor Full Stack"
+  description="Artigos técnicos sobre desenvolvimento web, arquitetura de software, boas práticas e tecnologias modernas."
+>
+  <div class="container mx-auto px-4 py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      <!-- Sidebar -->
+      <aside class="lg:col-span-1">
+        <div class="sticky top-24">
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Categorias</h2>
+            <ul class="space-y-2">
+              {
+                categories.map((category) => (
+                  <li>
+                    <a
+                      href={`/blog/categoria/${category.toLowerCase()}`}
+                      class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400"
+                    >
+                      {category}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+            <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Tags</h2>
+            <div class="flex flex-wrap gap-2">
+              {
+                tags.map((tag) => (
+                  <a
+                    href={`/blog/tag/${tag.toLowerCase()}`}
+                    class="px-3 py-1 text-sm bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200 rounded-full hover:bg-primary-200 dark:hover:bg-primary-800 transition-colors"
+                  >
+                    {tag}
+                  </a>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="lg:col-span-3">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-8">Blog</h1>
+
+        <div class="space-y-8">
+          {
+            posts.map((post) => (
+              <article class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                <div class="p-6">
+                  <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
+                    <span>{format(post.publishDate, 'dd MMMM, yyyy', { locale: ptBR })}</span>
+                    <span class="mx-2">•</span>
+                    <span>{post.category}</span>
+                  </div>
+                  <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                    <a
+                      href={`/blog/${post.slug}`}
+                      class="hover:text-primary-600 dark:hover:text-primary-400"
+                    >
+                      {post.title}
+                    </a>
+                  </h2>
+                  <p class="text-gray-600 dark:text-gray-400 mb-4">{post.excerpt}</p>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                      <Image
+                        src={avatarImage}
+                        alt={post.author}
+                        class="object-cover w-10 h-10 rounded-full"
+                      />
+                      <span class="text-sm text-gray-600 dark:text-gray-400">{post.author}</span>
+                    </div>
+                    <a
+                      href={`/blog/${post.slug}`}
+                      class="text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 font-medium"
+                    >
+                      Ler mais →
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </main>
+    </div>
+  </div>
+</Layout>
