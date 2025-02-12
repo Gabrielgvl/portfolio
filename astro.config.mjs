@@ -27,6 +27,17 @@ export default defineConfig({
   image: {
     service: {
       entrypoint: 'astro/assets/services/sharp',
+      config: {
+        limitInputPixels: false,
+      },
+    },
+  },
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'pt', 'es'],
+    routing: {
+      prefixDefaultLocale: false,
+      strategy: 'pathname',
     },
   },
 });

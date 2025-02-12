@@ -1,89 +1,36 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '@/layouts/Layout.astro';
+import { getLocaleFromUrl, useTranslations, useTranslatedPath } from '@/i18n/utils';
 import { Image } from 'astro:assets';
-import { t, l } from 'astro-i18n';
+import mercadoEnvios from '../assets/portfolio/mercado-envios.png';
+import erp from '../assets/portfolio/erp-giga.png';
+import iot from '../assets/portfolio/iot.png';
 
-// Import portfolio images
-import logisticsImage from '../assets/portfolio/mercado-envios.png';
-import furyImage from '../assets/portfolio/fury.png';
-import ecommerceImage from '../assets/portfolio/ambevtech_logo.png';
-import cryptoImage from '../assets/portfolio/yinbi.jpg';
-import erpImage from '../assets/portfolio/erp-giga.png';
-import iotImage from '../assets/portfolio/citara.png';
-import tourismImage from '../assets/portfolio/tourism.png';
+const locale = getLocaleFromUrl(Astro.url);
+const t = useTranslations(locale);
+const translatePath = useTranslatedPath(locale);
 
-interface Project {
-  title: string;
-  description: string;
-  image: ImageMetadata;
-  tags: string[];
-  link: string;
-  github: string;
-}
-
-const projects: Project[] = [
+const projects = [
   {
-    title: 'Sistema de Restrições Logísticas - Mercado Livre',
-    description:
-      'Liderou melhorias significativas em um sistema crítico para serviços logísticos, implementando novas funcionalidades e otimizando a performance. Utilizou Golang e Machine Learning para prever a elegibilidade de itens para transporte aéreo.',
-    image: logisticsImage,
-    tags: ['Golang', 'Machine Learning', 'Microservices', 'AWS'],
+    title: t('projects.mercadoenvios.title'),
+    description: t('projects.mercadoenvios.description'),
+    image: mercadoEnvios,
+    technologies: ['Go', 'AWS', 'Kubernetes', 'Machine Learning'],
     link: '#',
-    github: '#',
   },
   {
-    title: 'SDKs Fury - Mercado Livre',
-    description:
-      'Liderança no desenvolvimento de SDKs para o Fury, a plataforma interna de serviços de nuvem do Mercado Livre. O projeto visa padronizar e simplificar o acesso aos serviços de nuvem, promovendo maior agilidade e escalabilidade.',
-    image: furyImage,
-    tags: ['Golang', 'Cloud Services', 'SDK Development', 'DevOps'],
+    title: t('projects.erp.title'),
+    description: t('projects.erp.description'),
+    image: erp,
+    technologies: ['React', 'Node.js', 'PostgreSQL', 'Docker'],
     link: '#',
-    github: '#',
   },
   {
-    title: 'E-commerce B2B - Ambev Tech',
-    description:
-      'Desenvolvimento e manutenção de e-commerces robustos e escaláveis, com foco em qualidade e performance. Implementação de pipelines CI/CD e testes end-to-end, elevando o padrão das soluções globais.',
-    image: ecommerceImage,
-    tags: ['React', 'TypeScript', 'RecoilJS', 'NextJS', 'Azure DevOps'],
+    title: t('projects.iot.title'),
+    description: t('projects.iot.description'),
+    image: iot,
+    technologies: ['Python', 'MQTT', 'InfluxDB', 'Grafana'],
     link: '#',
-    github: '#',
-  },
-  {
-    title: 'Yinbi Cryptocurrency Wallet - Lantern',
-    description:
-      'Desenvolvimento completo do MVP de uma carteira de criptomoedas inovadora, atuando no frontend e integração com backend. Estabeleceu bases sólidas para segurança e eficiência nas transações digitais.',
-    image: cryptoImage,
-    tags: ['React', 'Blockchain', 'Crypto', 'Security'],
-    link: '#',
-    github: '#',
-  },
-  {
-    title: 'ERP Robusto - GigaCandanga',
-    description:
-      'Software Architect na criação de um ERP com arquitetura de microserviços, desenvolvendo provas de conceito e gerenciando a infraestrutura completa da aplicação.',
-    image: erpImage,
-    tags: ['Golang', 'React', 'TypeScript', 'PostgreSQL', 'WebDAV'],
-    link: '#',
-    github: '#',
-  },
-  {
-    title: 'Projeto Multiprotocolo IoT - Citara Labs',
-    description:
-      'Desenvolvimento full-stack de uma aplicação IoT complexa, integrando dispositivos e sistemas em uma solução inovadora. Gerenciamento de desafios técnicos multidisciplinares.',
-    image: iotImage,
-    tags: ['React', 'Python', 'Golang', 'GraphQL', 'Cassandra', 'IoT'],
-    link: '#',
-    github: '#',
-  },
-  {
-    title: 'ERP para Turismo - Mirante',
-    description:
-      'Desenvolvimento e manutenção de um ERP para o setor de turismo, criando novas funcionalidades e prestando suporte à equipe. Contribuiu para a modernização dos processos internos.',
-    image: tourismImage,
-    tags: ['Java', 'Spring', 'Wicket', 'PostgreSQL'],
-    link: '#',
-    github: '#',
   },
 ];
 ---
@@ -92,80 +39,70 @@ const projects: Project[] = [
   title={t('meta.title')}
   description={t('meta.description')}
 >
-  <div class="container mx-auto px-4 py-16">
-    <div class="text-center mb-16">
-      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-        {t('hero.title')}
-      </h1>
-      <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-        {t('hero.description')}
-      </p>
-    </div>
+  <section class="py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            {t('hero.title')}
+          </h1>
+          <p class="text-xl text-gray-600 dark:text-gray-400">
+            {t('hero.description')}
+          </p>
+        </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {
-        projects.map((project) => (
-          <article class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105">
-            <div class="relative pb-[56.25%]">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {projects.map((project) => (
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
               <Image
                 src={project.image}
                 alt={project.title}
-                class="absolute inset-0 w-full h-full object-contain"
+                class="w-full h-48 object-cover"
+                width={800}
+                height={400}
               />
-            </div>
-            <div class="p-6">
-              <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                {project.title}
-              </h2>
-              <p class="text-gray-600 dark:text-gray-400 mb-4">{project.description}</p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                {project.tags.map((tag) => (
-                  <span class="px-3 py-1 text-sm bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200 rounded-full">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <div class="flex justify-between items-center">
+              <div class="p-6">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                  {project.title}
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">{project.description}</p>
+                <div class="mb-4">
+                  <h4 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    {t('projects.technologies')}
+                  </h4>
+                  <div class="flex flex-wrap gap-2">
+                    {project.technologies.map((tech) => (
+                      <span class="px-2 py-1 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
                 <a
                   href={project.link}
-                  class="text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 font-medium"
                   target="_blank"
                   rel="noopener noreferrer"
+                  class="inline-flex items-center text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300"
                 >
-                  {t('projects.view_project')}
-                </a>
-                <a
-                  href={project.github}
-                  class="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span class="sr-only">GitHub</span>
-                  <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path
-                      fill-rule="evenodd"
-                      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
+                  {t('projects.view_project')} →
                 </a>
               </div>
             </div>
-          </article>
-        ))
-      }
-    </div>
+          ))}
+        </div>
 
-    <div class="mt-16 text-center">
-      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-8">
-        {t('cta.title')}
-      </h2>
-      <a
-        href={l('/contact')}
-        class="inline-flex items-center justify-center px-8 py-3 text-base font-medium rounded-lg text-white bg-primary-600 hover:bg-primary-700 transition-colors"
-      >
-        {t('cta.button')}
-      </a>
+        <div class="text-center mt-12">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+            {t('cta.title')}
+          </h2>
+          <a
+            href={translatePath('contact')}
+            class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600"
+          >
+            {t('cta.button')}
+          </a>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 </Layout>

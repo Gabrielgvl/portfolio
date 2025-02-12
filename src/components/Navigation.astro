@@ -1,25 +1,23 @@
 ---
-import { t, l, astroI18n } from 'astro-i18n';
+import { getLocaleFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils';
 import LocaleSwitcher from './LocaleSwitcher.astro';
 
-const navItems = [
-  { href: l('/'), text: t('nav.home') },
-  { href: l('/portfolio'), text: t('nav.portfolio') },
-  { href: l('/blog'), text: t('nav.blog') },
-  { href: l('/about'), text: t('nav.about') },
-  { href: l('/contact'), text: t('nav.contact') },
-];
+const locale = getLocaleFromUrl(Astro.url);
+const t = useTranslations(locale);
+const translatePath = useTranslatedPath(locale);
 
-const languages = [
-  { href: l(astroI18n.route, { targetLocale: 'en' }), name: 'English' },
-  { href: l(astroI18n.route, { targetLocale: 'pt' }), name: 'Português' },
-  { href: l(astroI18n.route, { targetLocale: 'es' }), name: 'Español' },
+const navItems = [
+  { href: translatePath('/'), text: t('nav.home') },
+  { href: translatePath('/portfolio'), text: t('nav.portfolio') },
+  { href: translatePath('/blog'), text: t('nav.blog') },
+  { href: translatePath('/about'), text: t('nav.about') },
+  { href: translatePath('/contact'), text: t('nav.contact') },
 ];
 ---
 
 <nav class="relative flex items-center justify-between h-16">
   <div class="flex items-center flex-shrink-0">
-    <a href={l('/')} class="text-xl font-bold text-gray-900 dark:text-white"> Gabriel Lima </a>
+    <a href={translatePath('/')} class="text-xl font-bold text-gray-900 dark:text-white"> Gabriel Lima </a>
   </div>
 
   <!-- Desktop Navigation -->
@@ -34,13 +32,9 @@ const languages = [
         </a>
       ))
     }
-    
+
     <!-- Language Switcher -->
-    <LocaleSwitcher showCurrent labels={{
-      en: 'English',
-      pt: 'Português',
-      es: 'Español',
-    }} />
+    <LocaleSwitcher />
 
     <button
       id="theme-toggle"

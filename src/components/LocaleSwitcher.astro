@@ -1,32 +1,10 @@
 ---
-import { astroI18n, l } from 'astro-i18n';
+import { languages } from '../i18n/ui';
+import { getLocaleFromUrl, useTranslatedPath, getRouteFromUrl } from '../i18n/utils';
 
-interface Props {
-  showCurrent: boolean;
-  labels: {
-    [locale: string]: string;
-  };
-}
-
-const { showCurrent = true, labels = {} } = Astro.props;
-
-const params: Record<string, string> = {};
-for (const [key, value] of Object.entries(Astro.params)) {
-  if (value === undefined) continue;
-  params[key] = String(value);
-}
-
-let links = astroI18n.locales.map((locale) => ({
-  locale,
-  href: l(Astro.url.pathname, params, {
-    targetLocale: locale,
-  }),
-  label: labels[locale] || locale.toUpperCase(),
-}));
-
-if (!showCurrent) {
-  links = links.filter((link) => link.locale !== astroI18n.locale);
-}
+const locale = getLocaleFromUrl(Astro.url);
+const translatePath = useTranslatedPath(locale);
+const route = getRouteFromUrl(Astro.url);
 ---
 
 <div class="relative group">
@@ -44,12 +22,16 @@ if (!showCurrent) {
     >
       <div class="py-1">
         {
-          links.map((link) => (
+          Object.entries(languages).map(([lang, label]) => (
             <a
-              href={link.href}
-              class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
+              href={translatePath(`/${route ? route : ''}`, lang)}
+              class={`block px-4 py-2 text-sm ${
+                locale === lang
+                  ? 'text-primary-600 dark:text-primary-400 bg-gray-50 dark:bg-gray-700'
+                  : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+              } cursor-pointer`}
             >
-              {link.label}
+              {label}
             </a>
           ))
         }

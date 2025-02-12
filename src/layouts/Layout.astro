@@ -1,20 +1,20 @@
 ---
-import Navigation from '../components/Navigation.astro';
 import '../styles/global.css';
-import { astroI18n, t } from 'astro-i18n';
+import { getLocaleFromUrl, useTranslations } from '../i18n/utils';
+import Navigation from '@/components/Navigation.astro';
 
 interface Props {
   title: string;
   description?: string;
 }
 
+const locale = getLocaleFromUrl(Astro.url);
+const t = useTranslations(locale);
 const { title, description = t('description') } = Astro.props;
-
-const currentLocale = astroI18n.locale;
 ---
 
 <!doctype html>
-<html lang={currentLocale}>
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -58,7 +58,8 @@ const currentLocale = astroI18n.locale;
       <div class="container mx-auto px-4 py-8">
         <div class="flex flex-col md:flex-row justify-between items-center">
           <div class="text-gray-600 dark:text-gray-400 mb-4 md:mb-0">
-            © {new Date().getFullYear()} {t('footer.copyright')}
+            © {new Date().getFullYear()}
+            {t('footer.copyright')}
           </div>
           <div class="flex items-center space-x-6">
             <a

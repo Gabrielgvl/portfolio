@@ -1,0 +1,122 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
+import { Image } from 'astro:assets';
+import avatarImage from '../../assets/avatar.png';
+import { render } from 'astro:content';
+import { getLocaleFromUrl, useTranslations, useTranslatedPath } from '@/i18n/utils';
+
+const locale = getLocaleFromUrl(Astro.url);
+const t = useTranslations(locale);
+const l = useTranslatedPath(locale);
+
+type BlogPost = CollectionEntry<'blog'>;
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post: BlogPost) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+type Props = {
+  post: BlogPost;
+};
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={post.data.title} description={post.data.description}>
+  <article class="container mx-auto px-4 py-16">
+    <header class="max-w-4xl mx-auto mb-16">
+      <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-4">
+        <span>
+          {t('blog.posts.published_on')}
+          {format(post.data.publishDate, 'dd MMMM, yyyy', { locale: ptBR })}
+        </span>
+        <span class="mx-2">•</span>
+        <span>{post.data.category}</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-8">
+        {post.data.title}
+      </h1>
+      <div class="flex items-center space-x-4">
+        <Image
+          src={avatarImage}
+          alt={post.data.author}
+          class="object-cover w-12 h-12 rounded-full"
+        />
+        <div>
+          <div class="font-medium text-gray-900 dark:text-white">
+            {post.data.author}
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="prose prose-lg dark:prose-invert max-w-4xl mx-auto">
+      <Content />
+    </div>
+
+    <footer class="max-w-4xl mx-auto mt-16 pt-8 border-t border-gray-200 dark:border-gray-700">
+      <div class="flex flex-wrap gap-2">
+        {
+          post.data.tags.map((tag: string) => (
+            <a
+              href={l(`/blog/tag/${tag.toLowerCase()}`)}
+              class="px-3 py-1 text-sm bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200 rounded-full hover:bg-primary-200 dark:hover:bg-primary-800 transition-colors"
+            >
+              {tag}
+            </a>
+          ))
+        }
+      </div>
+    </footer>
+  </article>
+</Layout>
+
+<style is:global>
+  .prose img {
+    @apply rounded-lg shadow-lg;
+  }
+
+  .prose pre {
+    @apply rounded-lg shadow-lg;
+  }
+
+  .prose code {
+    @apply text-primary-600 dark:text-primary-400;
+  }
+
+  .prose a {
+    @apply text-primary-600 dark:text-primary-400 no-underline hover:underline;
+  }
+
+  .prose h2,
+  .prose h3,
+  .prose h4 {
+    @apply text-gray-900 dark:text-white scroll-mt-20;
+  }
+
+  .prose p,
+  .prose ul,
+  .prose ol {
+    @apply text-gray-600 dark:text-gray-400;
+  }
+
+  .prose strong {
+    @apply text-gray-900 dark:text-white;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 border-primary-500;
+  }
+
+  .prose blockquote p {
+    @apply text-gray-700 dark:text-gray-300;
+  }
+</style>

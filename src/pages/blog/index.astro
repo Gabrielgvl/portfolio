@@ -3,50 +3,26 @@ import Layout from '../../layouts/Layout.astro';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { Image } from 'astro:assets';
-import { t, l } from 'astro-i18n';
 import avatarImage from '../../assets/avatar.png';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { getLocaleFromUrl, useTranslations, useTranslatedPath } from '@/i18n/utils';
 
-const posts = [
-  {
-    title: 'Como Criar uma API REST com Node.js e Express',
-    slug: 'criar-api-rest-nodejs-express',
-    excerpt:
-      'Aprenda a criar uma API REST completa utilizando Node.js e Express, com autenticação JWT e documentação Swagger.',
-    publishDate: new Date('2024-02-01'),
-    author: 'Gabriel Lima',
-    category: 'Backend',
-    tags: ['Node.js', 'Express', 'API', 'REST'],
-  },
-  {
-    title: 'Otimizando Performance em Aplicações React',
-    slug: 'otimizando-performance-react',
-    excerpt:
-      'Dicas e técnicas avançadas para melhorar a performance de suas aplicações React, incluindo code splitting e lazy loading.',
-    publishDate: new Date('2024-01-15'),
-    author: 'Gabriel Lima',
-    category: 'Frontend',
-    tags: ['React', 'Performance', 'JavaScript'],
-  },
-  {
-    title: 'Microsserviços com Docker e Kubernetes',
-    slug: 'microsservicos-docker-kubernetes',
-    excerpt:
-      'Um guia completo sobre como desenvolver e implantar arquiteturas de microsserviços usando Docker e Kubernetes.',
-    publishDate: new Date('2024-01-01'),
-    author: 'Gabriel Lima',
-    category: 'DevOps',
-    tags: ['Docker', 'Kubernetes', 'Microsserviços'],
-  },
-];
+type BlogPost = CollectionEntry<'blog'>;
 
-const categories = [...new Set(posts.map((post) => post.category))];
-const tags = [...new Set(posts.flatMap((post) => post.tags))];
+const posts = await getCollection('blog');
+const sortedPosts = posts.sort(
+  (a: BlogPost, b: BlogPost) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+
+const categories = [...new Set(posts.map((post: BlogPost) => post.data.category))] as string[];
+const tags = [...new Set(posts.flatMap((post: BlogPost) => post.data.tags))] as string[];
+
+const locale = getLocaleFromUrl(Astro.url);
+const t = useTranslations(locale);
+const l = useTranslatedPath(locale);
 ---
 
-<Layout
-  title={t('meta.title')}
-  description={t('meta.description')}
->
+<Layout title={t('meta.title')} description={t('meta.description')}>
   <div class="container mx-auto px-4 py-16">
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
       <!-- Sidebar -->
@@ -54,7 +30,7 @@ const tags = [...new Set(posts.flatMap((post) => post.tags))];
         <div class="sticky top-24">
           <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-8">
             <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-              {t('categories.title')}
+              {t('blog.categories.title')}
             </h2>
             <ul class="space-y-2">
               {
@@ -74,7 +50,7 @@ const tags = [...new Set(posts.flatMap((post) => post.tags))];
 
           <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
             <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-              {t('tags.title')}
+              {t('blog.tags.title')}
             </h2>
             <div class="flex flex-wrap gap-2">
               {
@@ -100,39 +76,42 @@ const tags = [...new Set(posts.flatMap((post) => post.tags))];
 
         <div class="space-y-8">
           {
-            posts.map((post) => (
+            sortedPosts.map((post: BlogPost) => (
               <article class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
                 <div class="p-6">
                   <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
                     <span>
-                      {t('posts.published_on')} {format(post.publishDate, 'dd MMMM, yyyy', { locale: ptBR })}
+                      {t('blog.posts.published_on')}{' '}
+                      {format(post.data.publishDate, 'dd MMMM, yyyy', { locale: ptBR })}
                     </span>
                     <span class="mx-2">•</span>
-                    <span>{post.category}</span>
+                    <span>{post.data.category}</span>
                   </div>
                   <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                     <a
-                      href={l(`/blog/${post.slug}`)}
+                      href={l(`/blog/${post.id}`)}
                       class="hover:text-primary-600 dark:hover:text-primary-400"
                     >
-                      {post.title}
+                      {post.data.title}
                     </a>
                   </h2>
-                  <p class="text-gray-600 dark:text-gray-400 mb-4">{post.excerpt}</p>
+                  <p class="text-gray-600 dark:text-gray-400 mb-4">{post.data.description}</p>
                   <div class="flex items-center justify-between">
                     <div class="flex items-center space-x-4">
                       <Image
                         src={avatarImage}
-                        alt={post.author}
+                        alt={post.data.author}
                         class="object-cover w-10 h-10 rounded-full"
                       />
-                      <span class="text-sm text-gray-600 dark:text-gray-400">{post.author}</span>
+                      <span class="text-sm text-gray-600 dark:text-gray-400">
+                        {post.data.author}
+                      </span>
                     </div>
                     <a
-                      href={l(`/blog/${post.slug}`)}
+                      href={l(`/blog/${post.id}`)}
                       class="text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 font-medium"
                     >
-                      {t('posts.read_more')} →
+                      {t('blog.posts.read_more')} →
                     </a>
                   </div>
                 </div>

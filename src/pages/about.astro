@@ -1,22 +1,18 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '@/layouts/Layout.astro';
+import { getLocaleFromUrl, useTranslations ,useTranslatedPath} from '@/i18n/utils';
 import { Image } from 'astro:assets';
-import { t, l } from 'astro-i18n';
 import profileImage from '../assets/profile.png';
 
+const locale = getLocaleFromUrl(Astro.url);
+const t = useTranslations(locale);
+const translatePath = useTranslatedPath(locale);
+
 const skills = {
-  languages: ['Golang', 'Python', 'JavaScript', 'TypeScript', 'Java', 'SQL'],
-  frontend: ['React', 'Next.js', 'Tailwind CSS', 'RecoilJS', 'Wicket'],
-  backend: ['Golang', 'Python', 'Spring', 'AWS', 'PostgreSQL', 'Machine Learning'],
-  tools: ['Git', 'Docker', 'AWS', 'Azure DevOps', 'Linux', 'CI/CD', 'HubSpot', 'Redshift'],
-  soft: [
-    'Liderança Técnica',
-    'Mentoria',
-    'Docência',
-    'Resolução de Problemas',
-    'Trabalho em Equipe',
-    'Comunicação',
-  ],
+  languages: ['JavaScript', 'TypeScript', 'Python', 'PHP', 'SQL'],
+  frontend: ['React', 'Next.js', 'Vue.js', 'Tailwind CSS', 'HTML5/CSS3'],
+  backend: ['Node.js', 'Express', 'Django', 'Laravel', 'GraphQL'],
+  cloud: ['AWS', 'Google Cloud', 'Docker', 'Kubernetes', 'Serverless'],
 };
 
 const experiences = [
@@ -115,139 +111,129 @@ const certifications = [
   title={t('meta.title')}
   description={t('meta.description')}
 >
-  <div class="container mx-auto px-4 py-16">
-    <div class="max-w-4xl mx-auto">
-      <!-- Hero Section -->
-      <div class="text-center mb-16">
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+  <section class="py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto">
+        <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-6">
           {t('hero.title')}
         </h1>
-        <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        <p class="text-xl text-gray-600 dark:text-gray-400 mb-12">
           {t('hero.description')}
         </p>
-      </div>
 
-      <!-- Profile Section -->
-      <div class="mb-16">
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-          <div class="md:flex">
-            <div class="w-full md:w-64 relative aspect-square">
-              <Image
-                src={profileImage}
-                alt="Gabriel Lima"
-                quality={100}
-                class="object-cover w-full h-full rounded-t-lg md:rounded-l-lg md:rounded-t-none"
-              />
+        <div class="flex flex-col md:flex-row items-center gap-8 mb-16">
+          <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg">
+            <Image
+              src={profileImage}
+              alt="Gabriel Lima"
+              class="w-full h-full object-cover"
+              width={192}
+              height={192}
+            />
+          </div>
+        </div>
+
+        <div class="mb-16">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            {t('experience.title')}
+          </h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-8">
+            {t('experience.description')}
+          </p>
+        </div>
+
+        <div class="mb-16">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            {t('skills.title')}
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                {t('skills.languages')}
+              </h3>
+              <ul class="list-disc list-inside text-gray-600 dark:text-gray-400">
+                {skills.languages.map((skill) => (
+                  <li>{skill}</li>
+                ))}
+              </ul>
             </div>
-            <div class="p-8 flex-1">
-              <div
-                class="uppercase tracking-wide text-sm text-primary-600 dark:text-primary-400 font-semibold"
-              >
-                {t('experience.title')}
-              </div>
-              <p class="mt-2 text-gray-600 dark:text-gray-400">
-                {t('experience.description')}
-              </p>
-              <div class="mt-4">
-                <a
-                  href={l('/contact')}
-                  class="inline-flex items-center text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300"
-                >
-                  {t('cta.contact')} →
-                </a>
-              </div>
+            <div>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                {t('skills.frontend')}
+              </h3>
+              <ul class="list-disc list-inside text-gray-600 dark:text-gray-400">
+                {skills.frontend.map((skill) => (
+                  <li>{skill}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                {t('skills.backend')}
+              </h3>
+              <ul class="list-disc list-inside text-gray-600 dark:text-gray-400">
+                {skills.backend.map((skill) => (
+                  <li>{skill}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                {t('skills.cloud')}
+              </h3>
+              <ul class="list-disc list-inside text-gray-600 dark:text-gray-400">
+                {skills.cloud.map((skill) => (
+                  <li>{skill}</li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Skills Section -->
-      <div class="mb-16">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8">{t('skills.title')}</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {
-            Object.entries(skills).map(([category, items]) => (
-              <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white capitalize mb-4">
-                  {t(`skills.${category}`)}
-                </h3>
-                <div class="flex flex-wrap gap-2">
-                  {items.map((item) => (
-                    <span class="px-3 py-1 text-sm bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200 rounded-full">
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))
-          }
-        </div>
-      </div>
-
-      <!-- Experience Section -->
-      <div class="mb-16">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8">
-          {t('experience.title')}
-        </h2>
-        <div class="space-y-8">
-          {
-            experiences.map((exp) => (
-              <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-                <div class="flex justify-between items-start mb-4">
-                  <div>
-                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{exp.title}</h3>
-                    <p class="text-primary-600 dark:text-primary-400">{exp.company}</p>
-                  </div>
-                  <span class="text-sm text-gray-500 dark:text-gray-400">{exp.period}</span>
-                </div>
-                <p class="text-gray-600 dark:text-gray-400 mb-4">{exp.description}</p>
-                <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400">
-                  {exp.achievements.map((achievement) => (
-                    <li>{achievement}</li>
-                  ))}
-                </ul>
-              </div>
-            ))
-          }
-        </div>
-      </div>
-
-      <!-- Education & Certifications -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8">{t('education.title')}</h2>
-          <div class="space-y-6">
-            {
-              education.map((edu) => (
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-                  <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                    {edu.degree}
-                  </h3>
-                  <p class="text-gray-600 dark:text-gray-400">{edu.institution}</p>
-                  <p class="text-sm text-gray-500 dark:text-gray-400">{edu.year}</p>
-                </div>
-              ))
-            }
+        <div class="mb-16">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            {t('education.title')}
+          </h2>
+          <div class="space-y-8">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                Universidade Federal de Minas Gerais (UFMG)
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400">Bachelor's Degree in Computer Science</p>
+              <p class="text-gray-500 dark:text-gray-500">2010 - 2014</p>
+            </div>
           </div>
         </div>
 
-        <div>
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8">{t('certifications.title')}</h2>
-          <div class="space-y-6">
-            {
-              certifications.map((cert) => (
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-                  <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                    {cert.name}
-                  </h3>
-                  <p class="text-gray-600 dark:text-gray-400">{cert.issuer}</p>
-                  <p class="text-sm text-gray-500 dark:text-gray-400">{cert.year}</p>
-                </div>
-              ))
-            }
+        <div class="mb-16">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            {t('certifications.title')}
+          </h2>
+          <div class="space-y-4">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                AWS Certified Solutions Architect
+              </h3>
+              <p class="text-gray-500 dark:text-gray-500">2023</p>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                Professional Scrum Master I (PSM I)
+              </h3>
+              <p class="text-gray-500 dark:text-gray-500">2022</p>
+            </div>
           </div>
+        </div>
+
+        <div class="text-center">
+          <a
+            href={translatePath('contact')}
+            class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600"
+          >
+            {t('cta.contact')}
+          </a>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </Layout>
