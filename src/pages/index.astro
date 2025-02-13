@@ -3,9 +3,6 @@ import '../styles/global.css';
 import Layout from '@/layouts/Layout.astro';
 import { getLocaleFromUrl, useTranslations, useTranslatedPath } from '@/i18n/utils';
 
-// Force server-side rendering for this page
-export const prerender = false;
-
 const locale = getLocaleFromUrl(Astro.url);
 const t = useTranslations(locale);
 const translatePath = useTranslatedPath(locale);
