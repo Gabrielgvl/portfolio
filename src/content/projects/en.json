@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Mercado Envios Logistics Platform",
+    "description": "Advanced logistics optimization platform with machine learning capabilities for e-commerce deliveries",
+    "image": "mercado-envios.png",
+    "technologies": ["Golang", "Python", "Machine Learning", "AWS", "Microservices"],
+    "link": "#"
+  },
+  {
+    "title": "Yinbi Cryptocurrency Wallet",
+    "description": "Next-generation cryptocurrency wallet focused on Yinshi digital currency",
+    "image": "yinbi.jpg",
+    "technologies": ["React", "TypeScript", "Blockchain", "Cryptocurrency"],
+    "link": "#"
+  },
+  {
+    "title": "Enterprise Resource Planning System",
+    "description": "Robust ERP system with microservices architecture and modern tech stack",
+    "image": "erp-giga.png",
+    "technologies": ["Golang", "React", "TypeScript", "PostgreSQL", "Webdav"],
+    "link": "#"
+  },
+  {
+    "title": "Ambev E-commerce Platform",
+    "description": "Scalable e-commerce solution with advanced features and optimized performance",
+    "image": "ambevtech_logo.png",
+    "technologies": ["React", "TypeScript", "NextJS", "Redux", "Azure DevOps"],
+    "link": "#"
+  },
+  {
+    "title": "IoT Monitoring Platform",
+    "description": "Comprehensive IoT platform for industrial monitoring with real-time data processing",
+    "image": "iot.png",
+    "technologies": ["React", "TypeScript", "Python", "Golang", "GraphQL", "Cassandra"],
+    "link": "#"
+  }
+] 

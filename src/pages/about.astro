@@ -5,7 +5,6 @@ import { getLocaleFromUrl, useTranslations } from '@/i18n/utils';
 import { Image } from 'astro:assets';
 import profileImage from '../assets/profile.png';
 import { getCollection } from 'astro:content';
-import type { Skills, Experience, Education, Certification } from '../types/collections';
 
 const locale = getLocaleFromUrl(Astro.url);
 const t = useTranslations(locale);
@@ -17,15 +16,15 @@ const experiencesEntry = (await getCollection('experiences', ({ id }) => id.spli
 const educationEntry = (await getCollection('education', ({ id }) => id.split('/').at(0) === locale)).at(0);
 const certificationsEntry = (await getCollection('certifications', ({ id }) => id.split('/').at(0) === locale)).at(0);
 
-const skills: Skills = skillsEntry?.data || {
+const skills = skillsEntry?.data || {
   languages: [],
   frontend: [],
   backend: [],
   cloud: [],
 };
-const experiences: Experience[] = experiencesEntry?.data || [];
-const education: Education[] = educationEntry?.data || [];
-const certifications: Certification[] = certificationsEntry?.data || [];
+const experiences = experiencesEntry?.data || [];
+const education = educationEntry?.data || [];
+const certifications = certificationsEntry?.data || [];
 ---
 
 <Layout title={title}>
@@ -52,7 +51,7 @@ const certifications: Certification[] = certificationsEntry?.data || [];
               {t('experience.title')}
             </h2>
             <div class="space-y-8">
-              {experiences.map((exp: Experience) => (
+              {experiences.map((exp) => (
                 <div class="border-l-4 border-primary-500 pl-4">
                   <h3 class="text-xl font-semibold text-gray-900 dark:text-white">{exp.title}</h3>
                   <p class="text-lg text-gray-700 dark:text-gray-300">{exp.company}</p>
@@ -121,7 +120,7 @@ const certifications: Certification[] = certificationsEntry?.data || [];
               {t('education.title')}
             </h2>
             <div class="space-y-8">
-              {education.map((edu: Education) => (
+              {education.map((edu) => (
                 <div>
                   <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
                     {edu.degree}
@@ -138,7 +137,7 @@ const certifications: Certification[] = certificationsEntry?.data || [];
               {t('certifications.title')}
             </h2>
             <div class="space-y-4">
-              {certifications.map((cert: Certification) => (
+              {certifications.map((cert) => (
                 <div>
                   <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
                     {cert.name}

@@ -1,6 +1,6 @@
 {
-  "languages": ["JavaScript", "TypeScript", "Python", "PHP", "SQL"],
-  "frontend": ["React", "Next.js", "Vue.js", "Tailwind CSS", "HTML5/CSS3"],
-  "backend": ["Node.js", "Express", "Django", "Laravel", "GraphQL"],
-  "cloud": ["AWS", "Google Cloud", "Docker", "Kubernetes", "Serverless"]
+  "languages": ["Inglês", "Português", "Espanhol"],
+  "frontend": ["React", "TypeScript", "Next.js", "JavaScript", "HTML5/CSS3", "Redux", "Tailwind"],
+  "backend": ["Golang", "Python", "Java", "Node.js", "GraphQL", "Spring"],
+  "cloud": ["AWS", "Azure DevOps", "Docker", "Kubernetes", "PostgreSQL", "Cassandra"]
 } 

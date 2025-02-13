@@ -20,7 +20,6 @@ export function useTranslatedPath(locale: keyof typeof ui) {
       routes[l as keyof typeof routes] !== undefined &&
       routes[l as keyof typeof routes][pathName as keyof (typeof routes)[typeof defaultLang]] !==
         undefined;
-
     const translatedPath = hasTranslation
       ? '/' +
         routes[l as keyof typeof routes][pathName as keyof (typeof routes)[typeof defaultLang]]

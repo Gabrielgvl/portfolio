@@ -3,38 +3,16 @@ import Layout from '@/layouts/Layout.astro';
 import Hero from '@/components/Hero.astro';
 import { getLocaleFromUrl, useTranslations, useTranslatedPath } from '@/i18n/utils';
 import { Image } from 'astro:assets';
-import mercadoEnvios from '../assets/portfolio/mercado-envios.png';
-import erp from '../assets/portfolio/erp-giga.png';
-import iot from '../assets/portfolio/iot.png';
+import { getCollection } from 'astro:content';
 
 const locale = getLocaleFromUrl(Astro.url);
 const t = useTranslations(locale);
 const title = t('portfolio.meta.title');
 const translatePath = useTranslatedPath(locale);
 
-const projects = [
-  {
-    title: t('projects.mercadoenvios.title'),
-    description: t('projects.mercadoenvios.description'),
-    image: mercadoEnvios,
-    technologies: ['React', 'TypeScript', 'Node.js', 'AWS'],
-    link: '#',
-  },
-  {
-    title: t('projects.erp.title'),
-    description: t('projects.erp.description'),
-    image: erp,
-    technologies: ['Vue.js', 'Laravel', 'MySQL', 'Docker'],
-    link: '#',
-  },
-  {
-    title: t('projects.iot.title'),
-    description: t('projects.iot.description'),
-    image: iot,
-    technologies: ['Python', 'Django', 'PostgreSQL', 'AWS IoT'],
-    link: '#',
-  },
-];
+// Get projects from collection based on locale
+const projectsEntry = (await getCollection('projects', ({ id }) => id.split('/').at(0) === locale)).at(0);
+const projects = projectsEntry?.data || [];
 ---
 
 <Layout title={title}>
@@ -46,7 +24,7 @@ const projects = [
             {projects.map((project) => (
               <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
                 <Image
-                  src={project.image}
+                  src={`/src/assets/portfolio/${project.image}`}
                   alt={project.title}
                   class="w-full h-48 object-cover"
                   width={800}

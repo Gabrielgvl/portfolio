@@ -128,12 +128,6 @@ export const ui = {
     'blog.categories.backend': 'Backend',
     'blog.categories.devops': 'DevOps',
     'blog.tags.title': 'Tags',
-    'projects.mercadoenvios.title': 'Mercado Envios',
-    'projects.mercadoenvios.description': 'Logistics optimization platform for e-commerce deliveries',
-    'projects.erp.title': 'ERP System',
-    'projects.erp.description': 'Enterprise Resource Planning system for business management',
-    'projects.iot.title': 'IoT Platform',
-    'projects.iot.description': 'Internet of Things platform for industrial monitoring',
   },
   pt: {
     'nav.home': 'Início',
@@ -256,12 +250,6 @@ export const ui = {
     'blog.categories.backend': 'Backend',
     'blog.categories.devops': 'DevOps',
     'blog.tags.title': 'Tags',
-    'projects.mercadoenvios.title': 'Mercado Envios',
-    'projects.mercadoenvios.description': 'Plataforma de otimização logística para entregas de e-commerce',
-    'projects.erp.title': 'Sistema ERP',
-    'projects.erp.description': 'Sistema de Planejamento de Recursos Empresariais para gestão de negócios',
-    'projects.iot.title': 'Plataforma IoT',
-    'projects.iot.description': 'Plataforma de Internet das Coisas para monitoramento industrial',
   },
   es: {
     'nav.home': 'Inicio',
@@ -384,12 +372,6 @@ export const ui = {
     'blog.categories.backend': 'Backend',
     'blog.categories.devops': 'DevOps',
     'blog.tags.title': 'Etiquetas',
-    'projects.mercadoenvios.title': 'Mercado Envios',
-    'projects.mercadoenvios.description': 'Plataforma de optimización logística para entregas de comercio electrónico',
-    'projects.erp.title': 'Sistema ERP',
-    'projects.erp.description': 'Sistema de Planificación de Recursos Empresariales para gestión de negocios',
-    'projects.iot.title': 'Plataforma IoT',
-    'projects.iot.description': 'Plataforma de Internet de las Cosas para monitoreo industrial',
   },
 } as const;
 

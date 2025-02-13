@@ -2,49 +2,100 @@
   {
     "title": "Senior Software Engineer",
     "company": "Mercado Livre",
-    "period": "September 2021 - present",
-    "description": "Leading critical logistics projects, focusing on developing innovative solutions and performance optimization using Golang.",
+    "period": "September 2021 - Present",
+    "description": "Leading software engineer responsible for developing and maintaining essential toolkits and libraries for backend services.",
     "achievements": [
-      "Technical leadership in implementing and optimizing the logistics restrictions application",
-      "Development of Machine Learning algorithms for transport viability prediction",
-      "Integration and mentoring of new team members",
-      "Implementation of engineering practices that elevated operational standards",
-      "Contributing to transforming challenges into opportunities through innovative solutions"
+      "Spearheaded development of toolkits and libraries enhancing backend service efficiency",
+      "Improved logistics system restrictions using Go",
+      "Built machine learning algorithm for air transport eligibility prediction",
+      "Led significant projects including Flyability transfer and new architecture for restrictions",
+      "Mentored team members and participated in inner-sourcing projects",
+      "Collaborated with engineering teams to align best practices and standards"
     ]
   },
   {
     "title": "Senior Software Engineer",
     "company": "Varsity Tutors",
-    "period": "March 2023 - present",
-    "description": "Developing innovative solutions in Golang for data integration and critical systems enhancement.",
+    "period": "May 2024 - November 2024",
+    "description": "Senior engineer focused on enterprise data workflows and system stability improvements.",
     "achievements": [
-      "HubSpot data consolidation to AWS Redshift",
-      "Implementation of SSO authentication features",
-      "Performance optimization in critical systems",
-      "Collaboration with international teams on high-complexity projects"
+      "Engineered HubSpot data integration with AWS Redshift using Golang",
+      "Developed utility libraries to accelerate code refactoring",
+      "Built SSO-based student authentication system",
+      "Resolved critical production issues and implemented new features"
+    ]
+  },
+  {
+    "title": "Teacher",
+    "company": "UniCEUB",
+    "period": "July 2022 - July 2024",
+    "description": "Professor teaching introductory logic and web programming courses.",
+    "achievements": [
+      "Taught programming courses to 1st and 4th-semester students",
+      "Developed and administered course assessments",
+      "Provided comprehensive student support",
+      "Balanced theoretical and practical aspects of programming education"
+    ]
+  },
+  {
+    "title": "Software Engineer",
+    "company": "Lantern",
+    "period": "September 2021 - September 2022",
+    "description": "Led development of Yinbi cryptocurrency wallet project.",
+    "achievements": [
+      "Spearheaded frontend development for Yinbi cryptocurrency wallet",
+      "Led MVP development and full-cycle execution",
+      "Integrated multiple crypto providers for digital asset transactions",
+      "Improved code quality across repositories"
+    ]
+  },
+  {
+    "title": "Software Architect",
+    "company": "GigaCandanga",
+    "period": "February 2021 - September 2021",
+    "description": "Led the development of a robust ERP system using modern technologies.",
+    "achievements": [
+      "Developed ERP using Golang, React, TypeScript, PostgreSQL and Webdav",
+      "Responsible for microservices architecture",
+      "Implemented POCs and managed infrastructure",
+      "Managed CI/CD and on-premises server infrastructure",
+      "Led code reviews and provided knowledge transfer sessions"
     ]
   },
   {
     "title": "Analyst Developer",
     "company": "Ambev Tech",
-    "period": "January 2021 - August 2021",
-    "description": "Development of scalable e-commerce solutions using modern technologies like React, TypeScript, and RecoilJS.",
+    "period": "October 2020 - September 2021",
+    "description": "Development of scalable e-commerce solutions using modern web technologies.",
     "achievements": [
-      "Development of robust and scalable e-commerce platforms",
-      "Implementation of CI/CD pipelines in Azure DevOps",
-      "Code quality review and maintenance",
-      "Definition and implementation of new features"
+      "Developed robust e-commerce using React, TypeScript and RecoilJS",
+      "Implemented front-end CI/CD pipelines on Azure DevOps",
+      "Mentored junior developers and conducted technical interviews",
+      "Developed new features using NextJS and Redux",
+      "Implemented end-to-end tests using Cypress"
     ]
   },
   {
-    "title": "Professor",
-    "company": "UniCEUB",
-    "period": "2022 - 2024",
-    "description": "Programming and computational logic professor, contributing to the formation of future technology professionals.",
+    "title": "Full-stack Developer",
+    "company": "Citara Labs",
+    "period": "August 2019 - April 2020",
+    "description": "Development of multiprotocol IoT applications using various technologies.",
     "achievements": [
-      "Teaching programming and computational logic classes",
-      "Development of didactic material and practical projects",
-      "Mentoring students in development projects"
+      "Developed IoT application using React, TypeScript, Python, Golang, GraphQL and Cassandra",
+      "Responsible for front-end and back-end code quality",
+      "Provided technical leadership to new team members",
+      "Participated in feature refinements"
+    ]
+  },
+  {
+    "title": "Software Developer",
+    "company": "Mirante",
+    "period": "January 2018 - July 2019",
+    "description": "Development of enterprise solutions using Java technologies.",
+    "achievements": [
+      "Built an ERP using Java Spring and Wicket for a tourism company",
+      "Developed new features and maintained legacy code",
+      "Helped other interns with their activities"
     ]
   }
 ] 

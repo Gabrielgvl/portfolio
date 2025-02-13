@@ -5,7 +5,7 @@ import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 // 3. Define your collection(s)
-const blog = defineCollection({
+const blogCollection = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
   schema: z.object({
     title: z.string(),
@@ -18,7 +18,7 @@ const blog = defineCollection({
   }),
 });
 
-const skills = defineCollection({
+const skillsCollection = defineCollection({
   type: 'data',
   schema: z.object({
     languages: z.array(z.string()),
@@ -28,7 +28,7 @@ const skills = defineCollection({
   }),
 });
 
-const experiences = defineCollection({
+const experiencesCollection = defineCollection({
   type: 'data',
   schema: z.array(
     z.object({
@@ -41,7 +41,7 @@ const experiences = defineCollection({
   ),
 });
 
-const education = defineCollection({
+const educationCollection = defineCollection({
   type: 'data',
   schema: z.array(
     z.object({
@@ -52,7 +52,7 @@ const education = defineCollection({
   ),
 });
 
-const certifications = defineCollection({
+const certificationsCollection = defineCollection({
   type: 'data',
   schema: z.array(
     z.object({
@@ -63,5 +63,25 @@ const certifications = defineCollection({
   ),
 });
 
+const projectsCollection = defineCollection({
+  type: 'data',
+  schema: z.array(
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      image: z.string(),
+      technologies: z.array(z.string()),
+      link: z.string(),
+    })
+  ),
+});
+
 // 4. Export a single `collections` object to register your collection(s)
-export const collections = { blog, skills, experiences, education, certifications };
+export const collections = {
+  blog: blogCollection,
+  skills: skillsCollection,
+  experiences: experiencesCollection,
+  education: educationCollection,
+  certifications: certificationsCollection,
+  projects: projectsCollection,
+};

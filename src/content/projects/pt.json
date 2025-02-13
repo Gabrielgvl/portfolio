@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Plataforma Logística Mercado Envios",
+    "description": "Plataforma avançada de otimização logística com recursos de machine learning para entregas de e-commerce",
+    "image": "mercado-envios.png",
+    "technologies": ["Golang", "Python", "Machine Learning", "AWS", "Microservices"],
+    "link": "#"
+  },
+  {
+    "title": "Carteira de Criptomoedas Yinbi",
+    "description": "Carteira de criptomoedas de última geração focada na moeda digital Yinshi",
+    "image": "yinbi.jpg",
+    "technologies": ["React", "TypeScript", "Blockchain", "Cryptocurrency"],
+    "link": "#"
+  },
+  {
+    "title": "Sistema ERP Empresarial",
+    "description": "Sistema ERP robusto com arquitetura de microsserviços e stack tecnológico moderno",
+    "image": "erp-giga.png",
+    "technologies": ["Golang", "React", "TypeScript", "PostgreSQL", "Webdav"],
+    "link": "#"
+  },
+  {
+    "title": "Plataforma E-commerce Ambev",
+    "description": "Solução de e-commerce escalável com recursos avançados e performance otimizada",
+    "image": "ambevtech_logo.png",
+    "technologies": ["React", "TypeScript", "NextJS", "Redux", "Azure DevOps"],
+    "link": "#"
+  },
+  {
+    "title": "Plataforma de Monitoramento IoT",
+    "description": "Plataforma IoT abrangente para monitoramento industrial com processamento de dados em tempo real",
+    "image": "iot.png",
+    "technologies": ["React", "TypeScript", "Python", "Golang", "GraphQL", "Cassandra"],
+    "link": "#"
+  }
+] 
