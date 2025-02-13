@@ -1,5 +1,6 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import Layout from '@/layouts/Layout.astro';
+import Hero from '@/components/Hero.astro';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { Image } from 'astro:assets';
@@ -9,21 +10,29 @@ import { getLocaleFromUrl, useTranslations, useTranslatedPath } from '@/i18n/uti
 
 type BlogPost = CollectionEntry<'blog'>;
 
-const posts = await getCollection('blog');
-const sortedPosts = posts.sort(
+const locale = getLocaleFromUrl(Astro.url);
+const t = useTranslations(locale);
+const translatePath = useTranslatedPath(locale);
+const title = t('blog.meta.title');
+
+// Get blog posts for the current locale
+const allPosts = await getCollection('blog', ({ id }) => {
+  const [slug, localeFile] = id.split('/');
+  return localeFile === locale;
+});
+
+const sortedPosts = allPosts.sort(
   (a: BlogPost, b: BlogPost) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
 );
 
-const categories = [...new Set(posts.map((post: BlogPost) => post.data.category))] as string[];
-const tags = [...new Set(posts.flatMap((post: BlogPost) => post.data.tags))] as string[];
-
-const locale = getLocaleFromUrl(Astro.url);
-const t = useTranslations(locale);
-const l = useTranslatedPath(locale);
+const categories = [...new Set(allPosts.map((post: BlogPost) => post.data.category))] as string[];
+const tags = [...new Set(allPosts.flatMap((post: BlogPost) => post.data.tags))] as string[];
 ---
 
-<Layout title={t('meta.title')} description={t('meta.description')}>
-  <div class="container mx-auto px-4 py-16">
+<Layout title={title} description={t('meta.description')}>
+  <div class="container mx-auto px-4 py-8">
+    <Hero title={t('blog.hero.title')} description={t('blog.hero.description')} />
+
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
       <!-- Sidebar -->
       <aside class="lg:col-span-1">
@@ -33,18 +42,16 @@ const l = useTranslatedPath(locale);
               {t('blog.categories.title')}
             </h2>
             <ul class="space-y-2">
-              {
-                categories.map((category) => (
-                  <li>
-                    <a
-                      href={l(`/blog/categoria/${category.toLowerCase()}`)}
-                      class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400"
-                    >
-                      {category}
-                    </a>
-                  </li>
-                ))
-              }
+              {categories.map((category) => (
+                <li>
+                  <a
+                    href={translatePath(`/blog/categoria/${category.toLowerCase()}`)}
+                    class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400"
+                  >
+                    {category}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -53,16 +60,14 @@ const l = useTranslatedPath(locale);
               {t('blog.tags.title')}
             </h2>
             <div class="flex flex-wrap gap-2">
-              {
-                tags.map((tag) => (
-                  <a
-                    href={l(`/blog/tag/${tag.toLowerCase()}`)}
-                    class="px-3 py-1 text-sm bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200 rounded-full hover:bg-primary-200 dark:hover:bg-primary-800 transition-colors"
-                  >
-                    {tag}
-                  </a>
-                ))
-              }
+              {tags.map((tag) => (
+                <a
+                  href={translatePath(`/blog/tag/${tag.toLowerCase()}`)}
+                  class="px-3 py-1 text-sm bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200 rounded-full hover:bg-primary-200 dark:hover:bg-primary-800 transition-colors"
+                >
+                  {tag}
+                </a>
+              ))}
             </div>
           </div>
         </div>
@@ -70,13 +75,10 @@ const l = useTranslatedPath(locale);
 
       <!-- Main Content -->
       <main class="lg:col-span-3">
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-8">
-          {t('hero.title')}
-        </h1>
-
         <div class="space-y-8">
-          {
-            sortedPosts.map((post: BlogPost) => (
+          {sortedPosts.map((post: BlogPost) => {
+            const [slug] = post.id.split('/');
+            return (
               <article class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
                 <div class="p-6">
                   <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
@@ -89,7 +91,7 @@ const l = useTranslatedPath(locale);
                   </div>
                   <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                     <a
-                      href={l(`/blog/${post.id}`)}
+                      href={translatePath(`/blog/${slug}`)}
                       class="hover:text-primary-600 dark:hover:text-primary-400"
                     >
                       {post.data.title}
@@ -108,7 +110,7 @@ const l = useTranslatedPath(locale);
                       </span>
                     </div>
                     <a
-                      href={l(`/blog/${post.id}`)}
+                      href={translatePath(`/blog/${slug}`)}
                       class="text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 font-medium"
                     >
                       {t('blog.posts.read_more')} →
@@ -116,8 +118,8 @@ const l = useTranslatedPath(locale);
                   </div>
                 </div>
               </article>
-            ))
-          }
+            );
+          })}
         </div>
       </main>
     </div>

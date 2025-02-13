@@ -1,133 +1,125 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import { getLocaleFromUrl, useTranslations } from '@/i18n/utils';
+import Hero from '@/components/Hero.astro';
 import EmailIcon from '../components/icons/EmailIcon.astro';
 import LinkedInIcon from '../components/icons/LinkedInIcon.astro';
 import GitHubIcon from '../components/icons/GitHubIcon.astro';
 
 const locale = getLocaleFromUrl(Astro.url);
 const t = useTranslations(locale);
+const title = t('contact.meta.title');
 
 const contactOptions = [
   {
-    title: 'Email',
-    value: 'gvl_br@yahoo.com.br',
-    href: 'mailto:gvl_br@yahoo.com.br',
+    title: t('footer.email'),
+    value: 'gabriel@gadelima.com',
+    href: 'mailto:gabriel@gadelima.com',
     icon: EmailIcon,
   },
   {
-    title: 'LinkedIn',
-    value: 'linkedin.com/in/gabriel-vinhaes',
-    href: 'https://linkedin.com/in/gabriel-vinhaes',
+    title: t('footer.linkedin'),
+    value: 'linkedin.com/in/gadelima',
+    href: 'https://linkedin.com/in/gadelima',
     icon: LinkedInIcon,
   },
   {
     title: 'GitHub',
-    value: 'github.com/Gabrielgvl',
-    href: 'https://github.com/Gabrielgvl',
+    value: 'github.com/gadelima',
+    href: 'https://github.com/gadelima',
     icon: GitHubIcon,
   },
 ];
 ---
 
-<Layout
-  title={t('meta.title')}
-  description={t('meta.description')}
->
-  <section class="py-20">
-    <div class="container mx-auto px-4">
-      <div class="max-w-3xl mx-auto">
-        <div class="text-center mb-12">
-          <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            {t('hero.title')}
-          </h1>
-          <p class="text-xl text-gray-600 dark:text-gray-400">
-            {t('hero.description')}
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-          {contactOptions.map((option) => (
-            <a
-              href={option.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex flex-col items-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-            >
-              <option.icon class="w-8 h-8 text-primary-600 dark:text-primary-400 mb-4" />
-              <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                {option.title}
-              </h3>
-              <p class="text-gray-600 dark:text-gray-400 text-center">{option.value}</p>
-            </a>
-          ))}
-        </div>
-
-        <form class="space-y-6" action="#" method="POST">
-          <div>
-            <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-              {t('form.name')}
-            </label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              required
-              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm"
-            />
+<Layout title={title}>
+  <div class="container mx-auto px-4 py-8">
+    
+    <section>
+      <Hero title={t('contact.hero.title')} description={t('contact.hero.description')} />
+      <div class="container mx-auto px-4">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            {contactOptions.map((option) => (
+              <a
+                href={option.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex flex-col items-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+              >
+                <option.icon class="w-8 h-8 text-primary-600 dark:text-primary-400 mb-4" />
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                  {option.title}
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400 text-center">{option.value}</p>
+              </a>
+            ))}
           </div>
 
-          <div>
-            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-              {t('form.email')}
-            </label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              required
-              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm"
-            />
-          </div>
+          <form class="space-y-6" action="#" method="POST">
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                {t('form.name')}
+              </label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                required
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm"
+              />
+            </div>
 
-          <div>
-            <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-              {t('form.message')}
-            </label>
-            <textarea
-              name="message"
-              id="message"
-              rows="4"
-              required
-              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm"
-            ></textarea>
-          </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                {t('form.email')}
+              </label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                required
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm"
+              />
+            </div>
 
-          <div>
-            <button
-              type="submit"
-              class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 dark:bg-primary-500 dark:hover:bg-primary-600"
-            >
-              {t('form.submit')}
-            </button>
-          </div>
-        </form>
+            <div>
+              <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                {t('form.message')}
+              </label>
+              <textarea
+                name="message"
+                id="message"
+                rows="4"
+                required
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm"
+              ></textarea>
+            </div>
 
-        <div class="mt-12 bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
-          <h2 class="text-lg font-medium text-gray-900 dark:text-white mb-4">
-            {t('form.availability.title')}
-          </h2>
-          <p class="text-gray-600 dark:text-gray-400 mb-2">
-            {t('form.availability.description')}
-          </p>
-          <p class="text-gray-600 dark:text-gray-400 mb-4">
-            {t('form.availability.services')}
-          </p>
-          <p class="text-sm text-gray-500 dark:text-gray-500">
-            {t('form.availability.response_time')}
-          </p>
+            <div>
+              <button
+                type="submit"
+                class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 dark:bg-primary-500 dark:hover:bg-primary-600"
+              >
+                {t('form.submit')}
+              </button>
+            </div>
+          </form>
+
+          <div class="mt-12 bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-lg font-medium text-gray-900 dark:text-white mb-4">
+              {t('form.availability.title')}
+            </h2>
+            <p class="text-gray-600 dark:text-gray-400 mb-2">
+              {t('form.availability.description')}
+            </p>
+            <p class="text-gray-600 dark:text-gray-400 mb-4">
+              {t('form.availability.services')}
+            </p>
+            <p class="text-sm text-gray-500 dark:text-gray-500">
+              {t('form.availability.response_time')}
+            </p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </Layout>

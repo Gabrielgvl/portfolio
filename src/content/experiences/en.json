@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Senior Software Engineer",
+    "company": "Mercado Livre",
+    "period": "September 2021 - present",
+    "description": "Leading critical logistics projects, focusing on developing innovative solutions and performance optimization using Golang.",
+    "achievements": [
+      "Technical leadership in implementing and optimizing the logistics restrictions application",
+      "Development of Machine Learning algorithms for transport viability prediction",
+      "Integration and mentoring of new team members",
+      "Implementation of engineering practices that elevated operational standards",
+      "Contributing to transforming challenges into opportunities through innovative solutions"
+    ]
+  },
+  {
+    "title": "Senior Software Engineer",
+    "company": "Varsity Tutors",
+    "period": "March 2023 - present",
+    "description": "Developing innovative solutions in Golang for data integration and critical systems enhancement.",
+    "achievements": [
+      "HubSpot data consolidation to AWS Redshift",
+      "Implementation of SSO authentication features",
+      "Performance optimization in critical systems",
+      "Collaboration with international teams on high-complexity projects"
+    ]
+  },
+  {
+    "title": "Analyst Developer",
+    "company": "Ambev Tech",
+    "period": "January 2021 - August 2021",
+    "description": "Development of scalable e-commerce solutions using modern technologies like React, TypeScript, and RecoilJS.",
+    "achievements": [
+      "Development of robust and scalable e-commerce platforms",
+      "Implementation of CI/CD pipelines in Azure DevOps",
+      "Code quality review and maintenance",
+      "Definition and implementation of new features"
+    ]
+  },
+  {
+    "title": "Professor",
+    "company": "UniCEUB",
+    "period": "2022 - 2024",
+    "description": "Programming and computational logic professor, contributing to the formation of future technology professionals.",
+    "achievements": [
+      "Teaching programming and computational logic classes",
+      "Development of didactic material and practical projects",
+      "Mentoring students in development projects"
+    ]
+  }
+] 

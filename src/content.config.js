@@ -18,5 +18,50 @@ const blog = defineCollection({
   }),
 });
 
+const skills = defineCollection({
+  type: 'data',
+  schema: z.object({
+    languages: z.array(z.string()),
+    frontend: z.array(z.string()),
+    backend: z.array(z.string()),
+    cloud: z.array(z.string()),
+  }),
+});
+
+const experiences = defineCollection({
+  type: 'data',
+  schema: z.array(
+    z.object({
+      title: z.string(),
+      company: z.string(),
+      period: z.string(),
+      description: z.string(),
+      achievements: z.array(z.string()),
+    })
+  ),
+});
+
+const education = defineCollection({
+  type: 'data',
+  schema: z.array(
+    z.object({
+      degree: z.string(),
+      institution: z.string(),
+      year: z.string(),
+    })
+  ),
+});
+
+const certifications = defineCollection({
+  type: 'data',
+  schema: z.array(
+    z.object({
+      name: z.string(),
+      issuer: z.string(),
+      year: z.string(),
+    })
+  ),
+});
+
 // 4. Export a single `collections` object to register your collection(s)
-export const collections = { blog };
+export const collections = { blog, skills, experiences, education, certifications };

@@ -187,4 +187,4 @@ Em breve, publicarei um artigo mais aprofundado sobre padrões avançados de edi
 
 - [Código Fonte Completo](https://github.com/Gabrielgvl/recoil-demo-app)
 - [Documentação Oficial do RecoilJS](https://recoiljs.org/)
-- [Guia de Boas Práticas](https://recoiljs.org/docs/introduction/getting-started)
+- [Guia de Boas Práticas](https://recoiljs.org/docs/introduction/getting-started) 

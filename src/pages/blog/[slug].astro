@@ -12,16 +12,19 @@ const locale = getLocaleFromUrl(Astro.url);
 const t = useTranslations(locale);
 const l = useTranslatedPath(locale);
 
-type BlogPost = CollectionEntry<'blog'>;
+export type BlogPost = CollectionEntry<'blog'>;
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+  const posts = await getCollection('blog', ({ id }) => {
+    const [slug, localeFile] = id.split('/');
+    return localeFile === 'en';
+  });
+  
   return posts.map((post: BlogPost) => ({
-    params: { slug: post.id },
+    params: { slug: post.id.split('/').at(0) },
     props: { post },
   }));
 }
-
 type Props = {
   post: BlogPost;
 };

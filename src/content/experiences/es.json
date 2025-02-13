@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Ingeniero de Software Senior",
+    "company": "Mercado Livre",
+    "period": "septiembre 2021 - presente",
+    "description": "Liderando proyectos críticos de logística, enfocándome en desarrollar soluciones innovadoras y optimización de rendimiento usando Golang.",
+    "achievements": [
+      "Liderazgo técnico en la implementación y optimización de la aplicación de restricciones logísticas",
+      "Desarrollo de algoritmos de Machine Learning para predicción de viabilidad de transporte",
+      "Integración y mentoría de nuevos miembros del equipo",
+      "Implementación de prácticas de ingeniería que elevaron los estándares operativos",
+      "Contribución a la transformación de desafíos en oportunidades a través de soluciones innovadoras"
+    ]
+  },
+  {
+    "title": "Ingeniero de Software Senior",
+    "company": "Varsity Tutors",
+    "period": "marzo 2023 - presente",
+    "description": "Desarrollo de soluciones innovadoras en Golang para integración de datos y mejora de sistemas críticos.",
+    "achievements": [
+      "Consolidación de datos de HubSpot a AWS Redshift",
+      "Implementación de funcionalidades de autenticación SSO",
+      "Optimización de rendimiento en sistemas críticos",
+      "Colaboración con equipos internacionales en proyectos de alta complejidad"
+    ]
+  },
+  {
+    "title": "Analista Desarrollador",
+    "company": "Ambev Tech",
+    "period": "enero 2021 - agosto 2021",
+    "description": "Desarrollo de soluciones de comercio electrónico escalables utilizando tecnologías modernas como React, TypeScript y RecoilJS.",
+    "achievements": [
+      "Desarrollo de plataformas de comercio electrónico robustas y escalables",
+      "Implementación de pipelines CI/CD en Azure DevOps",
+      "Revisión y mantenimiento de la calidad del código",
+      "Definición e implementación de nuevas funcionalidades"
+    ]
+  },
+  {
+    "title": "Profesor",
+    "company": "UniCEUB",
+    "period": "2022 - 2024",
+    "description": "Profesor de programación y lógica computacional, contribuyendo a la formación de futuros profesionales de tecnología.",
+    "achievements": [
+      "Impartición de clases de programación y lógica computacional",
+      "Desarrollo de material didáctico y proyectos prácticos",
+      "Mentoría de estudiantes en proyectos de desarrollo"
+    ]
+  }
+] 

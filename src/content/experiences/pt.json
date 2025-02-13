@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Engenheiro de Software Sênior",
+    "company": "Mercado Livre",
+    "period": "setembro 2021 - presente",
+    "description": "Liderança em projetos críticos de logística, com foco em desenvolvimento de soluções inovadoras e otimização de performance usando Golang.",
+    "achievements": [
+      "Liderança técnica na implementação e otimização do aplicativo de restrições logísticas",
+      "Desenvolvimento de algoritmos de Machine Learning para previsão de viabilidade de transporte",
+      "Integração e mentoria de novos membros da equipe",
+      "Implementação de práticas de engenharia que elevaram o patamar operacional",
+      "Contribuição para a transformação de desafios em oportunidades através de soluções inovadoras"
+    ]
+  },
+  {
+    "title": "Engenheiro de Software Sênior",
+    "company": "Varsity Tutors",
+    "period": "março 2023 - presente",
+    "description": "Desenvolvimento de soluções inovadoras em Golang para integração de dados e aprimoramento de sistemas críticos.",
+    "achievements": [
+      "Consolidação de dados do HubSpot para AWS Redshift",
+      "Implementação de funcionalidades de autenticação via SSO",
+      "Otimização de performance em sistemas críticos",
+      "Colaboração com equipes internacionais em projetos de alta complexidade"
+    ]
+  },
+  {
+    "title": "Analista Desenvolvedor",
+    "company": "Ambev Tech",
+    "period": "janeiro 2021 - agosto 2021",
+    "description": "Desenvolvimento de e-commerces escaláveis utilizando tecnologias modernas como React, TypeScript e RecoilJS.",
+    "achievements": [
+      "Desenvolvimento de e-commerces robustos e escaláveis",
+      "Implementação de pipelines CI/CD no Azure DevOps",
+      "Revisão e manutenção da qualidade do código",
+      "Definição e implementação de novas features"
+    ]
+  },
+  {
+    "title": "Professor",
+    "company": "UniCEUB",
+    "period": "2022 - 2024",
+    "description": "Professor de programação e lógica computacional, contribuindo para a formação de futuros profissionais de tecnologia.",
+    "achievements": [
+      "Ministração de aulas de programação e lógica computacional",
+      "Desenvolvimento de material didático e projetos práticos",
+      "Mentoria de alunos em projetos de desenvolvimento"
+    ]
+  }
+] 

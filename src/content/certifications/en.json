@@ -1,0 +1,22 @@
+[
+  {
+    "name": "AWS Fundamentals: Going Cloud-Native",
+    "issuer": "AWS",
+    "year": "2023"
+  },
+  {
+    "name": "AWS Fundamentals: Building Serverless Applications",
+    "issuer": "AWS",
+    "year": "2023"
+  },
+  {
+    "name": "Applied Data Science with Python",
+    "issuer": "Coursera",
+    "year": "2022"
+  },
+  {
+    "name": "Full-Stack Web Development with React",
+    "issuer": "Coursera",
+    "year": "2022"
+  }
+] 

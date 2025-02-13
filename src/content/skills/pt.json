@@ -1,0 +1,6 @@
+{
+  "languages": ["JavaScript", "TypeScript", "Python", "PHP", "SQL"],
+  "frontend": ["React", "Next.js", "Vue.js", "Tailwind CSS", "HTML5/CSS3"],
+  "backend": ["Node.js", "Express", "Django", "Laravel", "GraphQL"],
+  "cloud": ["AWS", "Google Cloud", "Docker", "Kubernetes", "Serverless"]
+} 

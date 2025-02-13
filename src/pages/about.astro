@@ -1,239 +1,156 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import { getLocaleFromUrl, useTranslations ,useTranslatedPath} from '@/i18n/utils';
+import Hero from '@/components/Hero.astro';
+import { getLocaleFromUrl, useTranslations } from '@/i18n/utils';
 import { Image } from 'astro:assets';
 import profileImage from '../assets/profile.png';
+import { getCollection } from 'astro:content';
+import type { Skills, Experience, Education, Certification } from '../types/collections';
 
 const locale = getLocaleFromUrl(Astro.url);
 const t = useTranslations(locale);
-const translatePath = useTranslatedPath(locale);
+const title = t('about.meta.title');
 
-const skills = {
-  languages: ['JavaScript', 'TypeScript', 'Python', 'PHP', 'SQL'],
-  frontend: ['React', 'Next.js', 'Vue.js', 'Tailwind CSS', 'HTML5/CSS3'],
-  backend: ['Node.js', 'Express', 'Django', 'Laravel', 'GraphQL'],
-  cloud: ['AWS', 'Google Cloud', 'Docker', 'Kubernetes', 'Serverless'],
+// Get data from collections based on locale
+const skillsEntry = (await getCollection('skills', ({ id }) => id.split('/').at(0) === locale)).at(0);
+const experiencesEntry = (await getCollection('experiences', ({ id }) => id.split('/').at(0) === locale)).at(0);
+const educationEntry = (await getCollection('education', ({ id }) => id.split('/').at(0) === locale)).at(0);
+const certificationsEntry = (await getCollection('certifications', ({ id }) => id.split('/').at(0) === locale)).at(0);
+
+const skills: Skills = skillsEntry?.data || {
+  languages: [],
+  frontend: [],
+  backend: [],
+  cloud: [],
 };
-
-const experiences = [
-  {
-    title: 'Senior Software Engineer',
-    company: 'Mercado Livre',
-    period: 'setembro 2021 - presente',
-    description:
-      'Liderança em projetos críticos de logística, com foco em desenvolvimento de soluções inovadoras e otimização de performance usando Golang.',
-    achievements: [
-      'Liderança técnica na implementação e otimização do aplicativo de restrições logísticas',
-      'Desenvolvimento de algoritmos de Machine Learning para previsão de viabilidade de transporte',
-      'Integração e mentoria de novos membros da equipe',
-      'Implementação de práticas de engenharia que elevaram o patamar operacional',
-      'Contribuição para a transformação de desafios em oportunidades através de soluções inovadoras',
-    ],
-  },
-  {
-    title: 'Senior Software Engineer',
-    company: 'Varsity Tutors',
-    period: 'março 2023 - presente',
-    description:
-      'Desenvolvimento de soluções inovadoras em Golang para integração de dados e aprimoramento de sistemas críticos.',
-    achievements: [
-      'Consolidação de dados do HubSpot para AWS Redshift',
-      'Implementação de funcionalidades de autenticação via SSO',
-      'Otimização de performance em sistemas críticos',
-      'Colaboração com equipes internacionais em projetos de alta complexidade',
-    ],
-  },
-  {
-    title: 'Analyst Developer',
-    company: 'Ambev Tech',
-    period: 'janeiro 2021 - agosto 2021',
-    description:
-      'Desenvolvimento de e-commerces escaláveis utilizando tecnologias modernas como React, TypeScript e RecoilJS.',
-    achievements: [
-      'Desenvolvimento de e-commerces robustos e escaláveis',
-      'Implementação de pipelines CI/CD no Azure DevOps',
-      'Revisão e manutenção da qualidade do código',
-      'Definição e implementação de novas features',
-    ],
-  },
-  {
-    title: 'Professor',
-    company: 'UniCEUB',
-    period: '2022 - 2024',
-    description:
-      'Professor de programação e lógica computacional, contribuindo para a formação de futuros profissionais de tecnologia.',
-    achievements: [
-      'Ministração de aulas de programação e lógica computacional',
-      'Desenvolvimento de material didático e projetos práticos',
-      'Mentoria de alunos em projetos de desenvolvimento',
-    ],
-  },
-];
-
-const education = [
-  {
-    degree: 'Pós-graduação em Data Science e Machine Learning',
-    institution: 'UniCEUB',
-    year: '2020 - 2022',
-  },
-  {
-    degree: 'Graduação em Ciência da Computação',
-    institution: 'UniCEUB',
-    year: '2016 - 2019',
-  },
-];
-
-const certifications = [
-  {
-    name: 'AWS Fundamentals: Going Cloud-Native',
-    issuer: 'AWS',
-    year: '2023',
-  },
-  {
-    name: 'AWS Fundamentals: Building Serverless Applications',
-    issuer: 'AWS',
-    year: '2023',
-  },
-  {
-    name: 'Applied Data Science with Python',
-    issuer: 'Coursera',
-    year: '2022',
-  },
-  {
-    name: 'Full-Stack Web Development with React',
-    issuer: 'Coursera',
-    year: '2022',
-  },
-];
+const experiences: Experience[] = experiencesEntry?.data || [];
+const education: Education[] = educationEntry?.data || [];
+const certifications: Certification[] = certificationsEntry?.data || [];
 ---
 
-<Layout
-  title={t('meta.title')}
-  description={t('meta.description')}
->
-  <section class="py-20">
-    <div class="container mx-auto px-4">
-      <div class="max-w-3xl mx-auto">
-        <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-6">
-          {t('hero.title')}
-        </h1>
-        <p class="text-xl text-gray-600 dark:text-gray-400 mb-12">
-          {t('hero.description')}
-        </p>
+<Layout title={title}>
+  <div class="container mx-auto px-4 py-8">
+    <section>
+      <div class="container mx-auto px-4">
+        <Hero title={t('about.hero.title')} description={t('about.hero.description')} />
 
-        <div class="flex flex-col md:flex-row items-center gap-8 mb-16">
-          <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg">
-            <Image
-              src={profileImage}
-              alt="Gabriel Lima"
-              class="w-full h-full object-cover"
-              width={192}
-              height={192}
-            />
-          </div>
-        </div>
-
-        <div class="mb-16">
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-            {t('experience.title')}
-          </h2>
-          <p class="text-gray-600 dark:text-gray-400 mb-8">
-            {t('experience.description')}
-          </p>
-        </div>
-
-        <div class="mb-16">
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-            {t('skills.title')}
-          </h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                {t('skills.languages')}
-              </h3>
-              <ul class="list-disc list-inside text-gray-600 dark:text-gray-400">
-                {skills.languages.map((skill) => (
-                  <li>{skill}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                {t('skills.frontend')}
-              </h3>
-              <ul class="list-disc list-inside text-gray-600 dark:text-gray-400">
-                {skills.frontend.map((skill) => (
-                  <li>{skill}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                {t('skills.backend')}
-              </h3>
-              <ul class="list-disc list-inside text-gray-600 dark:text-gray-400">
-                {skills.backend.map((skill) => (
-                  <li>{skill}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                {t('skills.cloud')}
-              </h3>
-              <ul class="list-disc list-inside text-gray-600 dark:text-gray-400">
-                {skills.cloud.map((skill) => (
-                  <li>{skill}</li>
-                ))}
-              </ul>
+        <div class="max-w-4xl mx-auto">
+          <div class="flex justify-center mb-16">
+            <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg">
+              <Image
+                src={profileImage}
+                alt="Gabriel Lima"
+                class="w-full h-full object-cover"
+                width={800}
+                height={800}
+              />
             </div>
           </div>
-        </div>
 
-        <div class="mb-16">
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-            {t('education.title')}
-          </h2>
-          <div class="space-y-8">
-            <div>
-              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                Universidade Federal de Minas Gerais (UFMG)
-              </h3>
-              <p class="text-gray-600 dark:text-gray-400">Bachelor's Degree in Computer Science</p>
-              <p class="text-gray-500 dark:text-gray-500">2010 - 2014</p>
+          <div class="mb-16">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+              {t('experience.title')}
+            </h2>
+            <div class="space-y-8">
+              {experiences.map((exp: Experience) => (
+                <div class="border-l-4 border-primary-500 pl-4">
+                  <h3 class="text-xl font-semibold text-gray-900 dark:text-white">{exp.title}</h3>
+                  <p class="text-lg text-gray-700 dark:text-gray-300">{exp.company}</p>
+                  <p class="text-gray-600 dark:text-gray-400">{exp.period}</p>
+                  <p class="mt-2 text-gray-600 dark:text-gray-400">{exp.description}</p>
+                  <ul class="mt-4 list-disc list-inside text-gray-600 dark:text-gray-400">
+                    {exp.achievements.map((achievement: string) => (
+                      <li>{achievement}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
 
-        <div class="mb-16">
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-            {t('certifications.title')}
-          </h2>
-          <div class="space-y-4">
-            <div>
-              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                AWS Certified Solutions Architect
-              </h3>
-              <p class="text-gray-500 dark:text-gray-500">2023</p>
-            </div>
-            <div>
-              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                Professional Scrum Master I (PSM I)
-              </h3>
-              <p class="text-gray-500 dark:text-gray-500">2022</p>
+          <div class="mb-16">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+              {t('skills.title')}
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                  {t('skills.languages')}
+                </h3>
+                <ul class="list-disc list-inside text-gray-600 dark:text-gray-400">
+                  {skills.languages.map((skill: string) => (
+                    <li>{skill}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                  {t('skills.frontend')}
+                </h3>
+                <ul class="list-disc list-inside text-gray-600 dark:text-gray-400">
+                  {skills.frontend.map((skill: string) => (
+                    <li>{skill}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                  {t('skills.backend')}
+                </h3>
+                <ul class="list-disc list-inside text-gray-600 dark:text-gray-400">
+                  {skills.backend.map((skill: string) => (
+                    <li>{skill}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                  {t('skills.cloud')}
+                </h3>
+                <ul class="list-disc list-inside text-gray-600 dark:text-gray-400">
+                  {skills.cloud.map((skill: string) => (
+                    <li>{skill}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="text-center">
-          <a
-            href={translatePath('contact')}
-            class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600"
-          >
-            {t('cta.contact')}
-          </a>
+          <div class="mb-16">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+              {t('education.title')}
+            </h2>
+            <div class="space-y-8">
+              {education.map((edu: Education) => (
+                <div>
+                  <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                    {edu.degree}
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-400">{edu.institution}</p>
+                  <p class="text-gray-500 dark:text-gray-500">{edu.year}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="mb-16">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+              {t('certifications.title')}
+            </h2>
+            <div class="space-y-4">
+              {certifications.map((cert: Certification) => (
+                <div>
+                  <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                    {cert.name}
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-400">{cert.issuer}</p>
+                  <p class="text-gray-500 dark:text-gray-500">{cert.year}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </Layout>
