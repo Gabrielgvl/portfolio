@@ -1,101 +1,99 @@
 [
   {
     "title": "Ingeniero de Software Senior",
-    "company": "Mercado Livre",
+    "company": "Mercado Libre",
     "period": "Septiembre 2021 - Presente",
-    "description": "Ingeniero de software líder responsable del desarrollo y mantenimiento de toolkits y bibliotecas esenciales para servicios backend.",
+    "description": "Lideró iniciativas para mejorar rendimiento, reglas y confiabilidad operativa a escala.",
     "achievements": [
-      "Lideró el desarrollo de toolkits y bibliotecas mejorando la eficiencia de los servicios backend",
-      "Mejoró el sistema de restricciones logísticas usando Go",
-      "Construyó algoritmo de machine learning para predicción de elegibilidad de transporte aéreo",
-      "Lideró proyectos significativos incluyendo transferencia Flyability y nueva arquitectura para restricciones",
-      "Mentoreó miembros del equipo y participó en proyectos inner-sourcing",
-      "Colaboró con equipos de ingeniería para alinear mejores prácticas y estándares"
+      "Creó herramientas compartidas para estandarizar reglas críticas.",
+      "Redujo el tiempo de respuesta y aumentó la eficiencia operativa.",
+      "Entregó indicadores para decisiones más seguras.",
+      "Lideró proyectos entre equipos para modernizar flujos críticos.",
+      "Mentoreó personas y difundió buenas prácticas.",
+      "Alineó equipos en estándares y calidad."
     ]
   },
   {
     "title": "Ingeniero de Software Senior",
     "company": "Varsity Tutors",
     "period": "Mayo 2024 - Noviembre 2024",
-    "description": "Ingeniero senior enfocado en flujos de datos empresariales y mejoras de estabilidad del sistema.",
+    "description": "Enfocado en flujos de datos y estabilidad del sistema a gran escala.",
     "achievements": [
-      "Desarrolló integración de datos HubSpot con AWS Redshift usando Golang",
-      "Desarrolló bibliotecas utilitarias para acelerar refactorización de código",
-      "Construyó sistema de autenticación basado en SSO",
-      "Resolvió problemas críticos de producción e implementó nuevas funcionalidades"
+      "Simplificó integraciones de datos y redujo mantenimiento manual.",
+      "Creó utilidades compartidas para acelerar entregas.",
+      "Mejoró el acceso seguro de estudiantes y equipo.",
+      "Resolvió incidentes críticos y entregó mejoras de alto impacto."
     ]
   },
   {
     "title": "Profesor",
     "company": "UniCEUB",
     "period": "Julio 2022 - Julio 2024",
-    "description": "Profesor de lógica introductoria y cursos de programación web.",
+    "description": "Profesor de lógica y programación web con foco práctico.",
     "achievements": [
-      "Impartió cursos de programación para estudiantes de 1º y 4º semestre",
-      "Desarrolló y administró evaluaciones del curso",
-      "Proporcionó soporte integral a los estudiantes",
-      "Equilibró aspectos teóricos y prácticos de la educación en programación"
+      "Dictó cursos para grupos iniciales y avanzados.",
+      "Diseñó evaluaciones y materiales didácticos.",
+      "Acompañó a estudiantes con mentoría y feedback.",
+      "Equilibró teoría con proyectos prácticos."
     ]
   },
   {
     "title": "Ingeniero de Software",
     "company": "Lantern",
     "period": "Septiembre 2021 - Septiembre 2022",
-    "description": "Lideró el desarrollo del proyecto de billetera de criptomonedas Yinbi.",
+    "description": "Lideró la entrega del MVP de una billetera digital.",
     "achievements": [
-      "Lideró el desarrollo frontend de la billetera de criptomonedas Yinbi",
-      "Lideró el desarrollo MVP y ejecución del ciclo completo",
-      "Integró múltiples proveedores de criptomonedas para transacciones de activos digitales",
-      "Mejoró la calidad del código en varios repositorios"
+      "Condujo la entrega de punta a punta de la primera versión.",
+      "Mejoró el onboarding y la confiabilidad de las transacciones.",
+      "Coordinó integraciones con socios de pago.",
+      "Elevó estándares de calidad y entrega."
     ]
   },
   {
     "title": "Arquitecto de Software",
     "company": "GigaCandanga",
     "period": "Febrero 2021 - Septiembre 2021",
-    "description": "Lideró el desarrollo de un sistema ERP robusto usando tecnologías modernas.",
+    "description": "Lideró la entrega de un nuevo ERP para un negocio en crecimiento.",
     "achievements": [
-      "Desarrolló ERP usando Golang, React, TypeScript, PostgreSQL y Webdav",
-      "Responsable de la arquitectura de microservicios",
-      "Implementó POCs y gestionó infraestructura",
-      "Gestionó CI/CD e infraestructura de servidores on-premises",
-      "Lideró revisiones de código y proporcionó sesiones de transferencia de conocimiento"
+      "Diseñó la arquitectura y el plan de entrega.",
+      "Construyó módulos clave y aseguró el rendimiento.",
+      "Estructuró infraestructura y pipelines de releases.",
+      "Condujo revisiones de código y transferencia de conocimiento."
     ]
   },
   {
     "title": "Desarrollador Analista",
     "company": "Ambev Tech",
     "period": "Octubre 2020 - Septiembre 2021",
-    "description": "Desarrollo de soluciones e-commerce escalables usando tecnologías web modernas.",
+    "description": "Construyó experiencias de e-commerce escalables y aceleró entregas.",
     "achievements": [
-      "Desarrolló e-commerce robusto usando React, TypeScript y RecoilJS",
-      "Implementó pipelines de CI/CD frontend en Azure DevOps",
-      "Mentoreó desarrolladores junior y condujo entrevistas técnicas",
-      "Desarrolló nuevas funcionalidades usando NextJS y Redux",
-      "Implementó pruebas end-to-end usando Cypress"
+      "Entregó funcionalidades con impacto en conversión.",
+      "Mejoró pipelines de release para reducir demoras.",
+      "Mentoreó desarrolladores junior.",
+      "Fortaleció pruebas para reducir incidentes."
     ]
   },
   {
     "title": "Desarrollador Full-stack",
     "company": "Citara Labs",
     "period": "Agosto 2019 - Abril 2020",
-    "description": "Desarrollo de aplicaciones IoT multiprotocolo usando varias tecnologías.",
+    "description": "Entregó aplicaciones orientadas a datos y mejoró la confiabilidad.",
     "achievements": [
-      "Desarrolló aplicación IoT usando React, TypeScript, Python, Golang, GraphQL y Cassandra",
-      "Responsable de la calidad del código frontend y backend",
-      "Proporcionó liderazgo técnico a nuevos miembros del equipo",
-      "Participó en refinamientos de funcionalidades"
+      "Construyó productos con múltiples fuentes de datos.",
+      "Mejoró la calidad en sistemas de cara al cliente e internos.",
+      "Onboardó y apoyó a nuevos miembros.",
+      "Colaboró en refinamientos del producto."
     ]
   },
   {
     "title": "Desarrollador de Software",
     "company": "Mirante",
     "period": "Enero 2018 - Julio 2019",
-    "description": "Desarrollo de soluciones empresariales usando tecnologías Java.",
+    "description": "Mantuvo y evolucionó sistemas empresariales críticos.",
     "achievements": [
-      "Construyó un ERP usando Java Spring y Wicket para una empresa de turismo",
-      "Desarrolló nuevas funcionalidades y mantuvo código legacy",
-      "Ayudó a otros pasantes con sus actividades"
+      "Entregó un nuevo ERP para una empresa de turismo.",
+      "Mejoró funcionalidades y estabilidad del legado.",
+      "Apoyó a pasantes y compartió conocimiento."
     ]
   }
-] 
+]

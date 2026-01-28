@@ -3,99 +3,97 @@
     "title": "Senior Software Engineer",
     "company": "Mercado Livre",
     "period": "September 2021 - Present",
-    "description": "Leading software engineer responsible for developing and maintaining essential toolkits and libraries for backend services.",
+    "description": "Led initiatives to improve performance, rule management, and operational reliability at scale.",
     "achievements": [
-      "Spearheaded development of toolkits and libraries enhancing backend service efficiency",
-      "Improved logistics system restrictions using Go",
-      "Built machine learning algorithm for air transport eligibility prediction",
-      "Led significant projects including Flyability transfer and new architecture for restrictions",
-      "Mentored team members and participated in inner-sourcing projects",
-      "Collaborated with engineering teams to align best practices and standards"
+      "Built shared tooling to standardize critical business rules.",
+      "Reduced response time and improved operational throughput.",
+      "Delivered insights to support safer decision-making.",
+      "Led cross-team projects to modernize critical workflows.",
+      "Mentored engineers and shared best practices.",
+      "Aligned teams around standards and quality."
     ]
   },
   {
     "title": "Senior Software Engineer",
     "company": "Varsity Tutors",
     "period": "May 2024 - November 2024",
-    "description": "Senior engineer focused on enterprise data workflows and system stability improvements.",
+    "description": "Focused on data flows and system stability for a high-volume operation.",
     "achievements": [
-      "Engineered HubSpot data integration with AWS Redshift using Golang",
-      "Developed utility libraries to accelerate code refactoring",
-      "Built SSO-based student authentication system",
-      "Resolved critical production issues and implemented new features"
+      "Streamlined data integrations and reduced manual maintenance.",
+      "Created shared utilities to speed up delivery.",
+      "Improved secure access for students and staff.",
+      "Resolved critical incidents and shipped high-impact improvements."
     ]
   },
   {
     "title": "Teacher",
     "company": "UniCEUB",
     "period": "July 2022 - July 2024",
-    "description": "Professor teaching introductory logic and web programming courses.",
+    "description": "Taught logic and web development with a focus on practical problem solving.",
     "achievements": [
-      "Taught programming courses to 1st and 4th-semester students",
-      "Developed and administered course assessments",
-      "Provided comprehensive student support",
-      "Balanced theoretical and practical aspects of programming education"
+      "Taught programming courses for early and advanced cohorts.",
+      "Designed assessments and course materials.",
+      "Supported students with mentoring and feedback.",
+      "Balanced theory with hands-on projects."
     ]
   },
   {
     "title": "Software Engineer",
     "company": "Lantern",
     "period": "September 2021 - September 2022",
-    "description": "Led development of Yinbi cryptocurrency wallet project.",
+    "description": "Led the MVP delivery of a digital wallet product.",
     "achievements": [
-      "Spearheaded frontend development for Yinbi cryptocurrency wallet",
-      "Led MVP development and full-cycle execution",
-      "Integrated multiple crypto providers for digital asset transactions",
-      "Improved code quality across repositories"
+      "Owned end-to-end delivery of the first product version.",
+      "Improved onboarding and transaction reliability.",
+      "Coordinated partner integrations for payment flows.",
+      "Raised code quality and delivery standards."
     ]
   },
   {
     "title": "Software Architect",
     "company": "GigaCandanga",
     "period": "February 2021 - September 2021",
-    "description": "Led the development of a robust ERP system using modern technologies.",
+    "description": "Led delivery of a new ERP system for a growing business.",
     "achievements": [
-      "Developed ERP using Golang, React, TypeScript, PostgreSQL and Webdav",
-      "Responsible for microservices architecture",
-      "Implemented POCs and managed infrastructure",
-      "Managed CI/CD and on-premises server infrastructure",
-      "Led code reviews and provided knowledge transfer sessions"
+      "Designed the architecture and delivery plan.",
+      "Built key modules and ensured performance at scale.",
+      "Set up infrastructure and release pipelines.",
+      "Guided code reviews and knowledge transfer."
     ]
   },
   {
     "title": "Analyst Developer",
     "company": "Ambev Tech",
     "period": "October 2020 - September 2021",
-    "description": "Development of scalable e-commerce solutions using modern web technologies.",
+    "description": "Built scalable e-commerce experiences and improved delivery speed.",
     "achievements": [
-      "Developed robust e-commerce using React, TypeScript and RecoilJS",
-      "Implemented front-end CI/CD pipelines on Azure DevOps",
-      "Mentored junior developers and conducted technical interviews",
-      "Developed new features using NextJS and Redux",
-      "Implemented end-to-end tests using Cypress"
+      "Shipped customer-facing features that increased conversion.",
+      "Improved release pipelines to reduce delays.",
+      "Mentored junior developers.",
+      "Strengthened testing to reduce production issues."
     ]
   },
   {
     "title": "Full-stack Developer",
     "company": "Citara Labs",
     "period": "August 2019 - April 2020",
-    "description": "Development of multiprotocol IoT applications using various technologies.",
+    "description": "Delivered data-heavy applications and improved reliability.",
     "achievements": [
-      "Developed IoT application using React, TypeScript, Python, Golang, GraphQL and Cassandra",
-      "Responsible for front-end and back-end code quality",
-      "Provided technical leadership to new team members",
-      "Participated in feature refinements"
+      "Built multi-source data products.",
+      "Improved quality across customer-facing and internal systems.",
+      "Onboarded and supported new team members.",
+      "Collaborated on product refinements."
     ]
   },
   {
     "title": "Software Developer",
     "company": "Mirante",
     "period": "January 2018 - July 2019",
-    "description": "Development of enterprise solutions using Java technologies.",
+    "description": "Maintained and evolved critical enterprise systems.",
     "achievements": [
-      "Built an ERP using Java Spring and Wicket for a tourism company",
-      "Developed new features and maintained legacy code",
-      "Helped other interns with their activities"
+      "Delivered a new ERP for a tourism business.",
+      "Enhanced features and improved stability of legacy systems.",
+      "Supported interns and knowledge sharing."
     ]
   }
-] 
+]

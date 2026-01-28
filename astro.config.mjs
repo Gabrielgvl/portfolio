@@ -39,4 +39,9 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
+  vite: {
+    server: {
+      allowedHosts: ['dev.home.arpa'],
+    },
+  },
 });

@@ -10,7 +10,7 @@ const route = getRouteFromUrl(Astro.url);
 <div class="relative group">
   <button
     type="button"
-    class="flex items-center space-x-1 text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400"
+    class="flex items-center space-x-1 text-slate-600 hover:text-accent-500 dark:text-slate-300 dark:hover:text-accent-400 transition-colors"
     aria-haspopup="true"
   >
     <span>🌐</span>
@@ -18,7 +18,7 @@ const route = getRouteFromUrl(Astro.url);
 
   <div class="absolute right-0 pt-2 w-48">
     <div
-      class="rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 transform opacity-0 scale-95 invisible group-hover:opacity-100 group-hover:scale-100 group-hover:visible transition-all duration-200 ease-in-out origin-top-right"
+      class="rounded-md shadow-lg bg-white dark:bg-slate-900 ring-1 ring-black ring-opacity-5 transform opacity-0 scale-95 invisible group-hover:opacity-100 group-hover:scale-100 group-hover:visible transition-all duration-200 ease-in-out origin-top-right"
     >
       <div class="py-1">
         {
@@ -27,8 +27,8 @@ const route = getRouteFromUrl(Astro.url);
               href={translatePath(`/${route ? route : ''}`, lang)}
               class={`block px-4 py-2 text-sm ${
                 locale === lang
-                  ? 'text-primary-600 dark:text-primary-400 bg-gray-50 dark:bg-gray-700'
-                  : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                  ? 'text-accent-500 dark:text-accent-400 bg-slate-50 dark:bg-slate-800'
+                  : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
               } cursor-pointer`}
             >
               {label}

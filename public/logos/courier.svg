@@ -1,0 +1,5 @@
+<svg width="140" height="32" viewBox="0 0 140 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0.5" y="4.5" width="23" height="23" rx="6" stroke="#22D3EE" stroke-width="1"/>
+  <path d="M7 16h10" stroke="#22D3EE" stroke-width="2" stroke-linecap="round"/>
+  <text x="32" y="21" fill="#94A3B8" font-size="14" font-family="Sora, Arial, sans-serif" letter-spacing="1">Courier</text>
+</svg>

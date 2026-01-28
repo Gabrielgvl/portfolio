@@ -1,0 +1,25 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import CasesSection from '@/components/sections/CasesSection.astro';
+import { getLocaleFromUrl, useTranslations, useTranslatedPath } from '@/i18n/utils';
+import { getCollection } from 'astro:content';
+import animationsUrl from '../scripts/animations.ts?url';
+
+const locale = getLocaleFromUrl(Astro.url);
+const t = useTranslations(locale);
+const translatePath = useTranslatedPath(locale);
+
+const casesEntry = (
+  await getCollection('cases', ({ id }) => id.split('/').at(0) === locale)
+).at(0);
+const cases = casesEntry?.data ?? [];
+const casesPath = translatePath('/casos');
+---
+
+<Layout title={`${t('cases.page.title')} | Gabriel Vinhaes de Lima`} description={t('cases.page.description')}>
+  <div class="pt-6">
+    <CasesSection t={t} cases={cases} basePath={casesPath} />
+  </div>
+
+  <script type="module" src={animationsUrl}></script>
+</Layout>

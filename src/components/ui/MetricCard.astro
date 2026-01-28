@@ -1,0 +1,38 @@
+---
+interface Props {
+  value: string;
+  label: string;
+  description?: string;
+  tone?: 'accent' | 'success' | 'warning' | 'danger';
+  class?: string;
+}
+
+const { value, label, description, tone = 'accent', class: className = '' } = Astro.props;
+
+const tones: Record<string, string> = {
+  accent: 'text-accent-500 dark:text-accent-300',
+  success: 'text-success',
+  warning: 'text-warning',
+  danger: 'text-danger',
+};
+
+const match = value.match(/^([^0-9.-]*)(-?\d+(?:\.\d+)?)(.*)$/);
+const prefix = match?.[1] ?? '';
+const number = match ? Number(match[2]) : null;
+const suffix = match?.[3] ?? '';
+---
+
+<div class={`glass-surface rounded-2xl p-5 ${className}`}>
+  <div
+    class={`metric-value text-2xl md:text-3xl font-semibold font-mono ${tones[tone]}`}
+    data-value={number ?? undefined}
+    data-prefix={prefix}
+    data-suffix={suffix}
+  >
+    {value}
+  </div>
+  <div class="mt-2 text-sm font-semibold text-slate-900 dark:text-slate-200">{label}</div>
+  {description ? (
+    <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">{description}</p>
+  ) : null}
+</div>

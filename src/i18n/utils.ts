@@ -8,7 +8,7 @@ export function getLocaleFromUrl(url: URL) {
 
 export function useTranslations(locale: keyof typeof ui) {
   return function t(key: keyof (typeof ui)[typeof defaultLang]) {
-    return ui[locale][key] || ui[defaultLang][key] || key;
+    return ui[locale][key] ?? ui[defaultLang][key] ?? key;
   };
 }
 

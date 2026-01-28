@@ -2,7 +2,7 @@
 title: 'RecoilJS na Prática: Gerenciamento de Estado Moderno no React'
 description: 'Aprenda a implementar gerenciamento de estado eficiente em React usando RecoilJS, a biblioteca desenvolvida pelo Facebook. Guia prático com exemplos de código e casos de uso reais.'
 publishDate: 2024-03-20
-author: 'Gabriel Lima'
+author: 'Gabriel Vinhaes de Lima'
 category: 'Frontend'
 tags: ['React', 'RecoilJS', 'JavaScript', 'Estado', 'Performance']
 image: '/blog/recoiljs-banner.jpg'

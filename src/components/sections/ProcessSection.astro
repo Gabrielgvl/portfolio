@@ -1,0 +1,55 @@
+---
+import SectionHeader from '@/components/ui/SectionHeader.astro';
+
+interface Props {
+  t: (key: string) => string;
+}
+
+const { t } = Astro.props;
+
+const steps = [
+  {
+    title: t('process.steps.discovery.title'),
+    description: t('process.steps.discovery.description'),
+    meta: t('process.steps.discovery.meta'),
+  },
+  {
+    title: t('process.steps.diagnosis.title'),
+    description: t('process.steps.diagnosis.description'),
+    meta: t('process.steps.diagnosis.meta'),
+  },
+  {
+    title: t('process.steps.implementation.title'),
+    description: t('process.steps.implementation.description'),
+    meta: t('process.steps.implementation.meta'),
+  },
+  {
+    title: t('process.steps.handoff.title'),
+    description: t('process.steps.handoff.description'),
+    meta: t('process.steps.handoff.meta'),
+  },
+];
+---
+
+<section id="process" class="py-20">
+  <div class="container mx-auto px-4">
+    <SectionHeader
+      eyebrow={t('process.section_label')}
+      title={t('process.title')}
+      description={t('process.description')}
+    />
+
+    <div class="reveal-group mt-12 grid grid-cols-1 lg:grid-cols-4 gap-6">
+      {steps.map((step, index) => (
+        <div class="reveal-item glass-surface rounded-2xl p-6 border border-slate-800/70">
+          <div class="flex items-center justify-between text-xs uppercase tracking-[0.2em] text-slate-500">
+            <span>{t('process.step_label')} {String(index + 1).padStart(2, '0')}</span>
+            <span class="text-accent-400">{step.meta}</span>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold text-slate-900 dark:text-slate-100">{step.title}</h3>
+          <p class="mt-3 text-sm text-slate-600 dark:text-slate-400">{step.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

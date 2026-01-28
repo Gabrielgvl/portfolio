@@ -1,8 +1,8 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import Hero from '@/components/Hero.astro';
+import SectionHeader from '@/components/ui/SectionHeader.astro';
 import { format } from 'date-fns';
-import { ptBR } from 'date-fns/locale';
+import { enUS, es, ptBR } from 'date-fns/locale';
 import { Image } from 'astro:assets';
 import avatarImage from '../../assets/avatar.png';
 import { getCollection, type CollectionEntry } from 'astro:content';
@@ -14,6 +14,7 @@ const locale = getLocaleFromUrl(Astro.url);
 const t = useTranslations(locale);
 const translatePath = useTranslatedPath(locale);
 const title = t('blog.meta.title');
+const dateLocale = locale === 'pt' ? ptBR : locale === 'es' ? es : enUS;
 
 // Get blog posts for the current locale
 const allPosts = await getCollection('blog', ({ id }) => {
@@ -29,16 +30,21 @@ const categories = [...new Set(allPosts.map((post: BlogPost) => post.data.catego
 const tags = [...new Set(allPosts.flatMap((post: BlogPost) => post.data.tags))] as string[];
 ---
 
-<Layout title={title} description={t('meta.description')}>
+<Layout title={title} description={t('blog.meta.description')}>
   <div class="container mx-auto px-4 py-8">
-    <Hero title={t('blog.hero.title')} description={t('blog.hero.description')} />
+    <SectionHeader
+      eyebrow={t('nav.blog')}
+      title={t('blog.hero.title')}
+      description={t('blog.hero.description')}
+      align="center"
+    />
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
       <!-- Sidebar -->
       <aside class="lg:col-span-1">
         <div class="sticky top-24">
-          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-8">
-            <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+          <div class="bg-white dark:bg-slate-900 rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-lg font-semibold text-slate-900 dark:text-white mb-4">
               {t('blog.categories.title')}
             </h2>
             <ul class="space-y-2">
@@ -46,7 +52,7 @@ const tags = [...new Set(allPosts.flatMap((post: BlogPost) => post.data.tags))] 
                 <li>
                   <a
                     href={translatePath(`/blog/categoria/${category.toLowerCase()}`)}
-                    class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400"
+                    class="text-slate-600 hover:text-accent-500 dark:text-slate-400 dark:hover:text-accent-400"
                   >
                     {category}
                   </a>
@@ -55,15 +61,15 @@ const tags = [...new Set(allPosts.flatMap((post: BlogPost) => post.data.tags))] 
             </ul>
           </div>
 
-          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-            <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+          <div class="bg-white dark:bg-slate-900 rounded-lg shadow-lg p-6">
+            <h2 class="text-lg font-semibold text-slate-900 dark:text-white mb-4">
               {t('blog.tags.title')}
             </h2>
             <div class="flex flex-wrap gap-2">
               {tags.map((tag) => (
                 <a
                   href={translatePath(`/blog/tag/${tag.toLowerCase()}`)}
-                  class="px-3 py-1 text-sm bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200 rounded-full hover:bg-primary-200 dark:hover:bg-primary-800 transition-colors"
+                  class="px-3 py-1 text-sm bg-accent-400/10 text-accent-600 dark:text-accent-300 rounded-full hover:bg-accent-400/20 transition-colors"
                 >
                   {tag}
                 </a>
@@ -79,25 +85,25 @@ const tags = [...new Set(allPosts.flatMap((post: BlogPost) => post.data.tags))] 
           {sortedPosts.map((post: BlogPost) => {
             const [slug] = post.id.split('/');
             return (
-              <article class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+              <article class="bg-white dark:bg-slate-900 rounded-lg shadow-lg overflow-hidden">
                 <div class="p-6">
-                  <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
+                  <div class="flex items-center text-sm text-slate-500 dark:text-slate-400 mb-2">
                     <span>
                       {t('blog.posts.published_on')}{' '}
-                      {format(post.data.publishDate, 'dd MMMM, yyyy', { locale: ptBR })}
+                      {format(post.data.publishDate, 'dd MMMM, yyyy', { locale: dateLocale })}
                     </span>
                     <span class="mx-2">•</span>
                     <span>{post.data.category}</span>
                   </div>
-                  <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                  <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">
                     <a
                       href={translatePath(`/blog/${slug}`)}
-                      class="hover:text-primary-600 dark:hover:text-primary-400"
+                      class="hover:text-accent-500 dark:hover:text-accent-400"
                     >
                       {post.data.title}
                     </a>
                   </h2>
-                  <p class="text-gray-600 dark:text-gray-400 mb-4">{post.data.description}</p>
+                  <p class="text-slate-600 dark:text-slate-400 mb-4">{post.data.description}</p>
                   <div class="flex items-center justify-between">
                     <div class="flex items-center space-x-4">
                       <Image
@@ -105,13 +111,13 @@ const tags = [...new Set(allPosts.flatMap((post: BlogPost) => post.data.tags))] 
                         alt={post.data.author}
                         class="object-cover w-10 h-10 rounded-full"
                       />
-                      <span class="text-sm text-gray-600 dark:text-gray-400">
+                      <span class="text-sm text-slate-600 dark:text-slate-400">
                         {post.data.author}
                       </span>
                     </div>
                     <a
                       href={translatePath(`/blog/${slug}`)}
-                      class="text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 font-medium"
+                      class="text-accent-500 hover:text-accent-600 dark:text-accent-400 font-medium"
                     >
                       {t('blog.posts.read_more')} →
                     </a>

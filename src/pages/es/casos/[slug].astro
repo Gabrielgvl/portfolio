@@ -1,0 +1,93 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import MetricCard from '@/components/ui/MetricCard.astro';
+import { getLocaleFromUrl, useTranslations, useTranslatedPath } from '@/i18n/utils';
+import { getCollection } from 'astro:content';
+import animationsUrl from '../../../scripts/animations.ts?url';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('cases', ({ id }) => id.split('/').at(0) === 'es');
+  return entries.flatMap((entry) =>
+    entry.data.map((caseItem) => ({
+      params: { slug: caseItem.slug },
+      props: { caseItem },
+    }))
+  );
+}
+
+const locale = getLocaleFromUrl(Astro.url);
+const t = useTranslations(locale);
+const translatePath = useTranslatedPath(locale);
+
+const { caseItem } = Astro.props;
+const backHref = translatePath('/casos');
+---
+
+<Layout title={`${caseItem.company} | ${t('cases.page.title')}`} description={caseItem.result}>
+  <section class="pt-20 pb-16">
+    <div class="container mx-auto px-4">
+      <a href={backHref} class="text-sm text-slate-500 dark:text-slate-400 hover:text-accent-400">
+        ← {t('cases.detail.back')}
+      </a>
+
+      <div class="mt-6 flex flex-wrap items-center gap-4">
+        {caseItem.logo ? (
+          <img src={caseItem.logo} alt={caseItem.company} class="h-10 opacity-80" />
+        ) : null}
+        <h1 class="text-3xl md:text-4xl font-semibold text-slate-900 dark:text-slate-100">
+          {caseItem.company}
+        </h1>
+      </div>
+
+      <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">{caseItem.headline}</p>
+
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+        {caseItem.metrics.map((metric) => (
+          <MetricCard value={metric.value} label={metric.label} />
+        ))}
+      </div>
+
+      <div class="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="glass-surface rounded-2xl p-6 border border-slate-800/70">
+          <h2 class="text-sm uppercase tracking-[0.3em] text-accent-400">
+            {t('cases.detail.context')}
+          </h2>
+          <p class="mt-4 text-slate-600 dark:text-slate-300">{caseItem.context}</p>
+        </div>
+        <div class="glass-surface rounded-2xl p-6 border border-slate-800/70">
+          <h2 class="text-sm uppercase tracking-[0.3em] text-accent-400">
+            {t('cases.detail.problem')}
+          </h2>
+          <p class="mt-4 text-slate-600 dark:text-slate-300">{caseItem.problem}</p>
+        </div>
+        <div class="glass-surface rounded-2xl p-6 border border-slate-800/70">
+          <h2 class="text-sm uppercase tracking-[0.3em] text-accent-400">
+            {t('cases.detail.solution')}
+          </h2>
+          <p class="mt-4 text-slate-600 dark:text-slate-300">{caseItem.solution}</p>
+        </div>
+        <div class="glass-surface rounded-2xl p-6 border border-slate-800/70">
+          <h2 class="text-sm uppercase tracking-[0.3em] text-accent-400">
+            {t('cases.detail.result')}
+          </h2>
+          <p class="mt-4 text-slate-600 dark:text-slate-300">{caseItem.result}</p>
+        </div>
+      </div>
+
+      <div class="mt-10">
+        <h2 class="text-sm uppercase tracking-[0.3em] text-accent-400">
+          {t('cases.detail.stack')}
+        </h2>
+        <div class="mt-4 flex flex-wrap gap-2">
+          {caseItem.stack.map((tech) => (
+            <span class="rounded-full border border-slate-700/70 px-3 py-1 text-xs text-slate-600 dark:text-slate-300">
+              {tech}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script type="module" src={animationsUrl}></script>
+</Layout>

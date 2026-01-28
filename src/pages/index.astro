@@ -1,91 +1,40 @@
 ---
-import '../styles/global.css';
 import Layout from '@/layouts/Layout.astro';
+import HeroSection from '@/components/sections/HeroSection.astro';
+import PainPointsSection from '@/components/sections/PainPointsSection.astro';
+import ServicesSection from '@/components/sections/ServicesSection.astro';
+import ProcessSection from '@/components/sections/ProcessSection.astro';
+import CasesSection from '@/components/sections/CasesSection.astro';
+import AboutSection from '@/components/sections/AboutSection.astro';
+import CTASection from '@/components/sections/CTASection.astro';
 import { getLocaleFromUrl, useTranslations, useTranslatedPath } from '@/i18n/utils';
+import { getCollection } from 'astro:content';
+import animationsUrl from '../scripts/animations.ts?url';
 
 const locale = getLocaleFromUrl(Astro.url);
 const t = useTranslations(locale);
 const translatePath = useTranslatedPath(locale);
+
+const casesEntry = (
+  await getCollection('cases', ({ id }) => id.split('/').at(0) === locale)
+).at(0);
+const cases = casesEntry?.data ?? [];
+
+const whatsappLink =
+  'https://wa.me/5561991716125?text=Ol%C3%A1%2C%20vi%20seu%20site%20e%20gostaria%20de%20conversar';
+const emailLink = 'mailto:gabriel@delima.net.br';
+const casesPath = translatePath('/casos');
+const aboutPath = translatePath('/about');
 ---
 
 <Layout title={t('meta.title')} description={t('meta.description')}>
-  <section class="py-20">
-    <div class="container mx-auto px-4">
-      <div class="max-w-3xl mx-auto text-center">
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-          {t('hero.title')} <span class="text-primary-600 dark:text-primary-400">{t('hero.title_highlight')}</span>
-        </h1>
-        <p class="text-xl text-gray-600 dark:text-gray-400 mb-8">
-          {t('hero.description')}
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="#contact"
-            class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600"
-          >
-            {t('cta.start')}
-          </a>
-          <a
-            href={translatePath('portfolio')}
-            class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-primary-600 bg-primary-50 hover:bg-primary-100 dark:text-primary-400 dark:bg-gray-800 dark:hover:bg-gray-700"
-          >
-            {t('cta.portfolio')}
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <HeroSection t={t} primaryHref={whatsappLink} secondaryHref={casesPath} />
+  <PainPointsSection t={t} />
+  <ServicesSection t={t} />
+  <ProcessSection t={t} />
+  <CasesSection t={t} cases={cases} basePath={casesPath} />
+  <AboutSection t={t} aboutHref={aboutPath} />
+  <CTASection t={t} primaryHref={whatsappLink} secondaryHref={emailLink} />
 
-  <section class="py-20 bg-gray-50 dark:bg-gray-800">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">
-        {t('services.title')}
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-sm">
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-            {t('services.fullstack.title')}
-          </h3>
-          <p class="text-gray-600 dark:text-gray-400">
-            {t('services.fullstack.description')}
-          </p>
-        </div>
-        <div class="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-sm">
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-            {t('services.consulting.title')}
-          </h3>
-          <p class="text-gray-600 dark:text-gray-400">
-            {t('services.consulting.description')}
-          </p>
-        </div>
-        <div class="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-sm">
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-            {t('services.optimization.title')}
-          </h3>
-          <p class="text-gray-600 dark:text-gray-400">
-            {t('services.optimization.description')}
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="py-20" id="contact">
-    <div class="container mx-auto px-4">
-      <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
-          {t('cta.title')}
-        </h2>
-        <p class="text-xl text-gray-600 dark:text-gray-400 mb-8">
-          {t('cta.description')}
-        </p>
-        <a
-          href={translatePath('contact')}
-          class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600"
-        >
-          {t('cta.button')}
-        </a>
-      </div>
-    </div>
-  </section>
+  <script type="module" src={animationsUrl}></script>
 </Layout>

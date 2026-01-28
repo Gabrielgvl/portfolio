@@ -1,0 +1,71 @@
+---
+import { Image } from 'astro:assets';
+import SectionHeader from '@/components/ui/SectionHeader.astro';
+import MetricCard from '@/components/ui/MetricCard.astro';
+import Button from '@/components/ui/Button.astro';
+import profile from '@/assets/profile.png';
+
+interface Props {
+  t: (key: string) => string;
+  aboutHref: string;
+}
+
+const { t, aboutHref } = Astro.props;
+
+const stats = [
+  {
+    value: t('about.stats.years.value'),
+    label: t('about.stats.years.label'),
+    tone: 'accent',
+  },
+  {
+    value: t('about.stats.projects.value'),
+    label: t('about.stats.projects.label'),
+    tone: 'success',
+  },
+  {
+    value: t('about.stats.countries.value'),
+    label: t('about.stats.countries.label'),
+    tone: 'warning',
+  },
+];
+---
+
+<section id="about" class="py-20">
+  <div class="container mx-auto px-4">
+    <SectionHeader
+      eyebrow={t('about.section_label')}
+      title={t('about.title')}
+      description={t('about.description')}
+    />
+
+    <div class="mt-12 grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-8 items-center">
+      <div class="glass-surface rounded-3xl p-6 border border-slate-800/70">
+        <div class="flex flex-col sm:flex-row gap-6 items-start">
+          <Image
+            src={profile}
+            alt={t('about.photo_alt')}
+            class="h-32 w-32 rounded-2xl object-cover border border-slate-800/70"
+            loading="lazy"
+          />
+          <div>
+            <p class="text-base md:text-lg text-slate-600 dark:text-slate-300">
+              {t('about.bio')}
+            </p>
+            <div class="mt-6">
+              <Button href={aboutHref} variant="secondary" size="sm">
+                {t('about.more')}
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {stats.map((stat) => (
+          <MetricCard value={stat.value} label={stat.label} tone={stat.tone as any} />
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

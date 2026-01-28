@@ -2,7 +2,7 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import { format } from 'date-fns';
-import { ptBR } from 'date-fns/locale';
+import { enUS, es, ptBR } from 'date-fns/locale';
 import { Image } from 'astro:assets';
 import avatarImage from '../../assets/avatar.png';
 import { render } from 'astro:content';
@@ -11,6 +11,7 @@ import { getLocaleFromUrl, useTranslations, useTranslatedPath } from '@/i18n/uti
 const locale = getLocaleFromUrl(Astro.url);
 const t = useTranslations(locale);
 const l = useTranslatedPath(locale);
+const dateLocale = locale === 'pt' ? ptBR : locale === 'es' ? es : enUS;
 
 export type BlogPost = CollectionEntry<'blog'>;
 
@@ -36,15 +37,15 @@ const { Content } = await render(post);
 <Layout title={post.data.title} description={post.data.description}>
   <article class="container mx-auto px-4 py-16">
     <header class="max-w-4xl mx-auto mb-16">
-      <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-4">
+      <div class="flex items-center text-sm text-slate-500 dark:text-slate-400 mb-4">
         <span>
-          {t('blog.posts.published_on')}
-          {format(post.data.publishDate, 'dd MMMM, yyyy', { locale: ptBR })}
+          {t('blog.posts.published_on')}{' '}
+          {format(post.data.publishDate, 'dd MMMM, yyyy', { locale: dateLocale })}
         </span>
         <span class="mx-2">•</span>
         <span>{post.data.category}</span>
       </div>
-      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-8">
+      <h1 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-8">
         {post.data.title}
       </h1>
       <div class="flex items-center space-x-4">
@@ -54,7 +55,7 @@ const { Content } = await render(post);
           class="object-cover w-12 h-12 rounded-full"
         />
         <div>
-          <div class="font-medium text-gray-900 dark:text-white">
+          <div class="font-medium text-slate-900 dark:text-white">
             {post.data.author}
           </div>
         </div>
@@ -65,13 +66,13 @@ const { Content } = await render(post);
       <Content />
     </div>
 
-    <footer class="max-w-4xl mx-auto mt-16 pt-8 border-t border-gray-200 dark:border-gray-700">
+    <footer class="max-w-4xl mx-auto mt-16 pt-8 border-t border-slate-200 dark:border-slate-700">
       <div class="flex flex-wrap gap-2">
         {
           post.data.tags.map((tag: string) => (
             <a
               href={l(`/blog/tag/${tag.toLowerCase()}`)}
-              class="px-3 py-1 text-sm bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200 rounded-full hover:bg-primary-200 dark:hover:bg-primary-800 transition-colors"
+              class="px-3 py-1 text-sm bg-accent-400/10 text-accent-600 dark:text-accent-300 rounded-full hover:bg-accent-400/20 transition-colors"
             >
               {tag}
             </a>
@@ -92,34 +93,34 @@ const { Content } = await render(post);
   }
 
   .prose code {
-    @apply text-primary-600 dark:text-primary-400;
+    @apply text-accent-500 dark:text-accent-400;
   }
 
   .prose a {
-    @apply text-primary-600 dark:text-primary-400 no-underline hover:underline;
+    @apply text-accent-500 dark:text-accent-400 no-underline hover:underline;
   }
 
   .prose h2,
   .prose h3,
   .prose h4 {
-    @apply text-gray-900 dark:text-white scroll-mt-20;
+    @apply text-slate-900 dark:text-white scroll-mt-20;
   }
 
   .prose p,
   .prose ul,
   .prose ol {
-    @apply text-gray-600 dark:text-gray-400;
+    @apply text-slate-600 dark:text-slate-400;
   }
 
   .prose strong {
-    @apply text-gray-900 dark:text-white;
+    @apply text-slate-900 dark:text-white;
   }
 
   .prose blockquote {
-    @apply border-l-4 border-primary-500;
+    @apply border-l-4 border-accent-400;
   }
 
   .prose blockquote p {
-    @apply text-gray-700 dark:text-gray-300;
+    @apply text-slate-700 dark:text-slate-300;
   }
 </style>

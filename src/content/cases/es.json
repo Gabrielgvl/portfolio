@@ -1,0 +1,62 @@
+[
+  {
+    "slug": "courier-cost-reduction",
+    "company": "Courier",
+    "headline": "Reducción de costo sin frenar el crecimiento",
+    "context": "Empresa en crecimiento con costos operativos subiendo con el volumen.",
+    "problem": "Costos aumentando más rápido que los ingresos y desperdicios ocultos.",
+    "solution": "Organicé procesos y métricas para guiar decisiones y reducir desperdicios.",
+    "result": "Costo operativo -25% con KPIs claros y ejecución predecible.",
+    "metrics": [
+      { "value": "-25%", "label": "Costo operativo" },
+      { "value": "KPIs claros", "label": "Decisión" }
+    ],
+    "stack": ["Kubernetes", "AWS", "Prometheus", "CI/CD"],
+    "logo": "/logos/courier.svg"
+  },
+  {
+    "slug": "mercado-livre-performance",
+    "company": "Mercado Livre",
+    "headline": "Reglas complejas sin perder velocidad",
+    "context": "Operación a gran escala con reglas de negocio complejas.",
+    "problem": "Respuestas lentas y riesgo al cambiar reglas.",
+    "solution": "Mejoras de rendimiento y estandarización de reglas para cambios seguros.",
+    "result": "Tiempo de respuesta -10% con evolución segura de reglas.",
+    "metrics": [
+      { "value": "-10%", "label": "Tiempo de respuesta" },
+      { "value": "Reglas seguras", "label": "Cambios" }
+    ],
+    "stack": ["Golang", "Python", "Machine Learning", "Microservices"],
+    "logo": "/logos/mercado-livre.svg"
+  },
+  {
+    "slug": "mirante-legacy-discovery",
+    "company": "Mirante",
+    "headline": "Legado entendido en semanas, no meses",
+    "context": "Base crítica antigua y difícil de evolucionar.",
+    "problem": "Alto tiempo para entender el sistema y cambios riesgosos.",
+    "solution": "Proceso de descubrimiento estructurado y automatizaciones para reducir tiempo.",
+    "result": "Descubrimiento más rápido y cambios más seguros.",
+    "metrics": [
+      { "value": "Más rápido", "label": "Descubrimiento" },
+      { "value": "Más seguro", "label": "Cambios" }
+    ],
+    "stack": ["Python", "Docker", "AI Agents", "AST/CFG Analysis"],
+    "logo": "/logos/mirante.svg"
+  },
+  {
+    "slug": "varsity-tutors-integrations",
+    "company": "Varsity Tutors",
+    "headline": "Integraciones sin retrabajo constante",
+    "context": "Integraciones y datos con mantenimiento recurrente.",
+    "problem": "Alto esfuerzo para mantener los flujos funcionando.",
+    "solution": "Simplificación y estandarización con mayor confiabilidad.",
+    "result": "Menos mantenimiento y operación predecible.",
+    "metrics": [
+      { "value": "Menos", "label": "Mantenimiento" },
+      { "value": "Predecible", "label": "Operación" }
+    ],
+    "stack": ["Golang", "AWS Redshift", "HubSpot", "SSO"],
+    "logo": "/logos/varsity-tutors.svg"
+  }
+]

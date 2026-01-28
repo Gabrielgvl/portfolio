@@ -1,0 +1,62 @@
+[
+  {
+    "slug": "courier-cost-reduction",
+    "company": "Courier",
+    "headline": "Cost down without slowing growth",
+    "context": "Growing company with operational costs rising with volume.",
+    "problem": "Costs increasing faster than revenue with hidden waste.",
+    "solution": "Organized workflows and metrics to guide decisions and cut waste.",
+    "result": "Operational cost down 25% with clearer KPIs and predictable execution.",
+    "metrics": [
+      { "value": "-25%", "label": "Operational cost" },
+      { "value": "Clear KPIs", "label": "Decision clarity" }
+    ],
+    "stack": ["Kubernetes", "AWS", "Prometheus", "CI/CD"],
+    "logo": "/logos/courier.svg"
+  },
+  {
+    "slug": "mercado-livre-performance",
+    "company": "Mercado Livre",
+    "headline": "Complex rules without losing speed",
+    "context": "Large-scale operation with complex business rules.",
+    "problem": "Slow responses and risk when changing rules.",
+    "solution": "Performance improvements and standardized rules for safer changes.",
+    "result": "API response time down 10% with safer rule evolution.",
+    "metrics": [
+      { "value": "-10%", "label": "Response time" },
+      { "value": "Safer rules", "label": "Changes" }
+    ],
+    "stack": ["Golang", "Python", "Machine Learning", "Microservices"],
+    "logo": "/logos/mercado-livre.svg"
+  },
+  {
+    "slug": "mirante-legacy-discovery",
+    "company": "Mirante",
+    "headline": "Legacy understood in weeks, not months",
+    "context": "Critical legacy codebase that was hard to evolve.",
+    "problem": "High time to understand the system and risky changes.",
+    "solution": "Structured discovery and automation to cut time.",
+    "result": "Faster discovery and safer changes.",
+    "metrics": [
+      { "value": "Faster", "label": "Discovery" },
+      { "value": "Safer", "label": "Changes" }
+    ],
+    "stack": ["Python", "Docker", "AI Agents", "AST/CFG Analysis"],
+    "logo": "/logos/mirante.svg"
+  },
+  {
+    "slug": "varsity-tutors-integrations",
+    "company": "Varsity Tutors",
+    "headline": "Integrations without constant babysitting",
+    "context": "Integrations and data flows caused recurring maintenance.",
+    "problem": "High effort to keep everything running.",
+    "solution": "Simplified and standardized integrations with higher reliability.",
+    "result": "Lower maintenance cost and predictable operations.",
+    "metrics": [
+      { "value": "Lower", "label": "Maintenance" },
+      { "value": "Predictable", "label": "Operations" }
+    ],
+    "stack": ["Golang", "AWS Redshift", "HubSpot", "SSO"],
+    "logo": "/logos/varsity-tutors.svg"
+  }
+]

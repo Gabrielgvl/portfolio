@@ -63,15 +63,25 @@ const certificationsCollection = defineCollection({
   ),
 });
 
-const projectsCollection = defineCollection({
+const casesCollection = defineCollection({
   type: 'data',
   schema: z.array(
     z.object({
-      title: z.string(),
-      description: z.string(),
-      image: z.string(),
-      technologies: z.array(z.string()),
-      link: z.string(),
+      slug: z.string(),
+      company: z.string(),
+      headline: z.string(),
+      context: z.string(),
+      problem: z.string(),
+      solution: z.string(),
+      result: z.string(),
+      stack: z.array(z.string()),
+      metrics: z.array(
+        z.object({
+          value: z.string(),
+          label: z.string(),
+        })
+      ),
+      logo: z.string().optional(),
     })
   ),
 });
@@ -83,5 +93,5 @@ export const collections = {
   experiences: experiencesCollection,
   education: educationCollection,
   certifications: certificationsCollection,
-  projects: projectsCollection,
+  cases: casesCollection,
 };

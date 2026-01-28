@@ -1,0 +1,60 @@
+---
+import SectionHeader from '@/components/ui/SectionHeader.astro';
+
+interface Props {
+  t: (key: string) => string;
+}
+
+const { t } = Astro.props;
+
+const items = [
+  {
+    title: t('pain.items.slow_deploys.title'),
+    description: t('pain.items.slow_deploys.description'),
+  },
+  {
+    title: t('pain.items.incidents.title'),
+    description: t('pain.items.incidents.description'),
+  },
+  {
+    title: t('pain.items.drift.title'),
+    description: t('pain.items.drift.description'),
+  },
+  {
+    title: t('pain.items.observability.title'),
+    description: t('pain.items.observability.description'),
+  },
+  {
+    title: t('pain.items.legacy.title'),
+    description: t('pain.items.legacy.description'),
+  },
+  {
+    title: t('pain.items.pipelines.title'),
+    description: t('pain.items.pipelines.description'),
+  },
+];
+---
+
+<section id="diagnostico" class="py-20">
+  <div class="container mx-auto px-4">
+    <SectionHeader
+      eyebrow={t('pain.section_label')}
+      title={t('pain.title')}
+      description={t('pain.description')}
+    />
+
+    <div class="reveal-group mt-12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+      {items.map((item) => (
+        <div class="reveal-item glass-surface rounded-2xl p-6 border border-danger/30">
+          <div class="flex items-center gap-3 text-danger">
+            <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-danger/15 text-lg">
+              !
+            </span>
+            <h3 class="text-lg font-semibold text-slate-900 dark:text-slate-100">{item.title}</h3>
+          </div>
+          <p class="mt-4 text-sm text-slate-600 dark:text-slate-400">{item.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

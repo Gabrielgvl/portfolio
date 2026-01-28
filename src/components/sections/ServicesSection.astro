@@ -1,0 +1,86 @@
+---
+import SectionHeader from '@/components/ui/SectionHeader.astro';
+
+interface Props {
+  t: (key: string) => string;
+}
+
+const { t } = Astro.props;
+
+const services = [
+  {
+    key: 'reliability',
+    icon: 'SRE',
+    tone: 'text-emerald-500 dark:text-emerald-300',
+    border: 'border-emerald-400/30',
+  },
+  {
+    key: 'platform',
+    icon: 'DX',
+    tone: 'text-accent-500 dark:text-accent-300',
+    border: 'border-accent-400/30',
+  },
+  {
+    key: 'pipelines',
+    icon: 'DATA',
+    tone: 'text-violet-500 dark:text-violet-300',
+    border: 'border-violet-400/30',
+  },
+  {
+    key: 'modernization',
+    icon: 'AI',
+    tone: 'text-amber-500 dark:text-amber-300',
+    border: 'border-amber-400/30',
+  },
+];
+
+const getTags = (key: string) => t(`services.items.${key}.tags`).split('|');
+---
+
+<section id="services" class="py-20 bg-slate-50 dark:bg-slate-950/40">
+  <div class="container mx-auto px-4">
+    <SectionHeader
+      eyebrow={t('services.section_label')}
+      title={t('services.title')}
+      description={t('services.description')}
+    />
+
+    <div class="reveal-group mt-12 grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {services.map((service) => (
+        <div class={`reveal-item glass-surface rounded-2xl p-7 border ${service.border}`}>
+          <div class={`text-xs font-mono uppercase tracking-[0.3em] ${service.tone}`}>
+            {service.icon}
+          </div>
+          <h3 class="mt-4 text-xl font-semibold text-slate-900 dark:text-slate-100">
+            {t(`services.items.${service.key}.title`)}
+          </h3>
+          <p class="mt-3 text-sm text-slate-600 dark:text-slate-400">
+            {t(`services.items.${service.key}.description`)}
+          </p>
+
+          <div class="mt-4 flex flex-wrap gap-2">
+            {getTags(service.key).map((tag) => (
+              <span class="rounded-full border border-slate-700/70 px-3 py-1 text-xs text-slate-600 dark:text-slate-300">
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <div class="mt-6 flex items-baseline gap-2">
+            <span
+              class={`metric-value text-2xl font-semibold font-mono ${service.tone}`}
+              data-value={Number(t(`services.items.${service.key}.metric_value`))}
+              data-prefix={t(`services.items.${service.key}.metric_prefix`)}
+              data-suffix={t(`services.items.${service.key}.metric_suffix`)}
+            >
+              {t(`services.items.${service.key}.metric_display`)}
+            </span>
+            <span class="text-xs uppercase tracking-[0.2em] text-slate-500">
+              {t(`services.items.${service.key}.metric_label`)}
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

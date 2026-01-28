@@ -5,19 +5,29 @@ import LocaleSwitcher from './LocaleSwitcher.astro';
 const locale = getLocaleFromUrl(Astro.url);
 const t = useTranslations(locale);
 const translatePath = useTranslatedPath(locale);
+const homePath = translatePath('/');
 
 const navItems = [
-  { href: translatePath('/'), text: t('nav.home') },
-  { href: translatePath('/portfolio'), text: t('nav.portfolio') },
-  { href: translatePath('/blog'), text: t('nav.blog') },
-  { href: translatePath('/about'), text: t('nav.about') },
-  { href: translatePath('/contact'), text: t('nav.contact') },
+  { href: homePath, text: t('nav.home') },
+  { href: translatePath('/casos'), text: t('nav.cases') },
+  { href: `${homePath}#services`, text: t('nav.services') },
+  { href: `${homePath}#about`, text: t('nav.about') },
+  { href: `${homePath}#contact`, text: t('nav.contact') },
 ];
 ---
 
 <nav class="relative flex items-center justify-between h-16">
-  <div class="flex items-center flex-shrink-0">
-    <a href={translatePath('/')} class="text-xl font-bold text-gray-900 dark:text-white"> Gabriel Lima </a>
+  <div class="flex items-center gap-3">
+    <a
+      href={homePath}
+      class="text-sm sm:text-lg font-semibold tracking-tight text-slate-900 dark:text-white"
+    >
+      Gabriel Vinhaes de Lima
+    </a>
+    <span class="hidden sm:inline-flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+      <span class="h-1.5 w-1.5 rounded-full bg-accent-400 animate-pulse-soft"></span>
+      {t('nav.role')}
+    </span>
   </div>
 
   <!-- Desktop Navigation -->
@@ -26,7 +36,7 @@ const navItems = [
       navItems.map((item) => (
         <a
           href={item.href}
-          class="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 transition-colors"
+          class="text-sm font-medium text-slate-600 hover:text-accent-500 dark:text-slate-300 dark:hover:text-accent-400 transition-colors"
         >
           {item.text}
         </a>
@@ -38,7 +48,8 @@ const navItems = [
 
     <button
       id="theme-toggle"
-      class="p-2 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white rounded-lg"
+      class="p-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white rounded-lg border border-transparent hover:border-slate-200 dark:hover:border-slate-700 transition"
+      aria-label={t('nav.toggle_theme')}
     >
       <svg
         id="theme-toggle-dark-icon"
@@ -65,7 +76,7 @@ const navItems = [
   <div class="md:hidden">
     <button
       type="button"
-      class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800"
+      class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-slate-500 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800"
       aria-controls="mobile-menu"
       aria-expanded="false"
     >
@@ -89,14 +100,14 @@ const navItems = [
 
   <!-- Mobile Navigation Menu -->
   <div
-    class="mobile-menu hidden md:hidden absolute top-16 left-0 w-full bg-white dark:bg-gray-900 shadow-lg"
+    class="mobile-menu hidden md:hidden absolute top-16 left-0 w-full bg-white dark:bg-midnight-950 shadow-lg border-t border-slate-200/60 dark:border-slate-800/60"
   >
     <div class="px-2 pt-2 pb-3 space-y-1">
       {
         navItems.map((item) => (
           <a
             href={item.href}
-            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800"
+            class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800"
           >
             {item.text}
           </a>
@@ -105,3 +116,28 @@ const navItems = [
     </div>
   </div>
 </nav>
+
+<script>
+  const toggle = document.getElementById('theme-toggle');
+  const darkIcon = document.getElementById('theme-toggle-dark-icon');
+  const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+  if (document.documentElement.classList.contains('dark')) {
+    lightIcon?.classList.remove('hidden');
+  } else {
+    darkIcon?.classList.remove('hidden');
+  }
+
+  toggle?.addEventListener('click', () => {
+    const isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
+    darkIcon?.classList.toggle('hidden', isDark);
+    lightIcon?.classList.toggle('hidden', !isDark);
+  });
+
+  const mobileButton = document.querySelector('.mobile-menu-button');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  mobileButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+</script>
