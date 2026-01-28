@@ -65,6 +65,13 @@ const backHref = translatePath('/casos');
             {t('cases.detail.solution')}
           </h2>
           <p class="mt-4 text-slate-600 dark:text-slate-300">{caseItem.solution}</p>
+          {caseItem.actions?.length ? (
+            <ul class="mt-4 list-disc list-inside text-slate-600 dark:text-slate-300 space-y-2">
+              {caseItem.actions.map((action) => (
+                <li>{action}</li>
+              ))}
+            </ul>
+          ) : null}
         </div>
         <div class="glass-surface rounded-2xl p-6 border border-slate-800/70">
           <h2 class="text-sm uppercase tracking-[0.3em] text-accent-400">
@@ -72,6 +79,22 @@ const backHref = translatePath('/casos');
           </h2>
           <p class="mt-4 text-slate-600 dark:text-slate-300">{caseItem.result}</p>
         </div>
+        {caseItem.timeline ? (
+          <div class="glass-surface rounded-2xl p-6 border border-slate-800/70">
+            <h2 class="text-sm uppercase tracking-[0.3em] text-accent-400">
+              {t('cases.detail.timeline')}
+            </h2>
+            <p class="mt-4 text-slate-600 dark:text-slate-300">{caseItem.timeline}</p>
+          </div>
+        ) : null}
+        {caseItem.beforeAfter ? (
+          <div class="glass-surface rounded-2xl p-6 border border-slate-800/70">
+            <h2 class="text-sm uppercase tracking-[0.3em] text-accent-400">
+              {t('cases.detail.before_after')}
+            </h2>
+            <p class="mt-4 text-slate-600 dark:text-slate-300">{caseItem.beforeAfter}</p>
+          </div>
+        ) : null}
       </div>
 
       <div class="mt-10">

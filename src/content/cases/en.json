@@ -4,8 +4,15 @@
     "company": "Courier",
     "headline": "Cost down without slowing growth",
     "context": "Growing company with operational costs rising with volume.",
-    "problem": "Costs increasing faster than revenue with hidden waste.",
-    "solution": "Organized workflows and metrics to guide decisions and cut waste.",
+    "problem": "Costs were increasing faster than revenue with hidden waste across workflows.",
+    "solution": "Built a cost model and operating cadence to cut waste and keep delivery predictable.",
+    "actions": [
+      "Created cost-per-flow KPIs with alerts to guide decisions.",
+      "Removed pipeline waste and normalized batch sizes.",
+      "Tuned autoscaling/limits and added a biweekly review cadence."
+    ],
+    "timeline": "6 weeks across two short cycles.",
+    "beforeAfter": "Before: costs rising faster than revenue. After: operational cost down 25% with clear KPIs and predictable execution.",
     "result": "Operational cost down 25% with clearer KPIs and predictable execution.",
     "metrics": [
       { "value": "-25%", "label": "Operational cost" },
@@ -20,7 +27,14 @@
     "headline": "Complex rules without losing speed",
     "context": "Large-scale operation with complex business rules.",
     "problem": "Slow responses and risk when changing rules.",
-    "solution": "Performance improvements and standardized rules for safer changes.",
+    "solution": "Improved performance and created shared toolkits for complex rules.",
+    "actions": [
+      "Built shared rule toolkits used by multiple teams.",
+      "Refactored hot paths and caching to reduce response time.",
+      "Added safer rollout checks for rule changes."
+    ],
+    "timeline": "3 short cycles (~6 weeks).",
+    "beforeAfter": "Before: slow responses and risky rule changes. After: 10% faster responses with safer evolution.",
     "result": "API response time down 10% with safer rule evolution.",
     "metrics": [
       { "value": "-10%", "label": "Response time" },
@@ -35,7 +49,14 @@
     "headline": "Legacy understood in weeks, not months",
     "context": "Critical legacy codebase that was hard to evolve.",
     "problem": "High time to understand the system and risky changes.",
-    "solution": "Structured discovery and automation to cut time.",
+    "solution": "Structured discovery and automation to map legacy behavior.",
+    "actions": [
+      "Mapped business rules and flows with automated analysis.",
+      "Built a reproducible legacy environment for validation.",
+      "Created a discovery playbook and validation tests."
+    ],
+    "timeline": "4-6 weeks.",
+    "beforeAfter": "Before: changes took months of discovery. After: faster diagnosis and safer changes.",
     "result": "Faster discovery and safer changes.",
     "metrics": [
       { "value": "Faster", "label": "Discovery" },
@@ -50,7 +71,14 @@
     "headline": "Integrations without constant babysitting",
     "context": "Integrations and data flows caused recurring maintenance.",
     "problem": "High effort to keep everything running.",
-    "solution": "Simplified and standardized integrations with higher reliability.",
+    "solution": "Standardized integrations and improved reliability for critical flows.",
+    "actions": [
+      "Standardized data contracts and monitoring.",
+      "Simplified pipelines and reduced manual fixes.",
+      "Added alerts and recovery routines for failures."
+    ],
+    "timeline": "5 weeks.",
+    "beforeAfter": "Before: frequent manual babysitting. After: predictable operations with lower maintenance.",
     "result": "Lower maintenance cost and predictable operations.",
     "metrics": [
       { "value": "Lower", "label": "Maintenance" },

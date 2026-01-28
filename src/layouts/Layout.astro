@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { getLocaleFromUrl, useTranslations } from '../i18n/utils';
+import { defaultLang, routes, showDefaultLang } from '../i18n/ui';
 import Navigation from '@/components/Navigation.astro';
 import EmailIcon from '@/components/icons/EmailIcon.astro';
 import LinkedInIcon from '@/components/icons/LinkedInIcon.astro';
@@ -17,7 +18,86 @@ const t = useTranslations(locale);
 const { title, description = t('description') } = Astro.props;
 const whatsappLink =
   'https://wa.me/5561991716125?text=Ol%C3%A1%2C%20vi%20seu%20site%20e%20gostaria%20de%20conversar';
+const contactEmail = 'gabriel@delima.net.br';
+const contactPhone = '+55 61 99171-6125';
+const linkedInLink = 'https://linkedin.com/in/gabriel-vinhaes';
 const githubLink = 'https://github.com/Gabrielgvl';
+const site = Astro.site ?? new URL('https://gabriel.delima.net.br');
+const hrefLangMap = {
+  en: 'en',
+  pt: 'pt-BR',
+  es: 'es',
+} as const;
+const localeKeys = Object.keys(routes) as Array<keyof typeof routes>;
+
+const pathname = Astro.url.pathname;
+const segments = pathname.split('/').filter(Boolean);
+const hasLocalePrefix = localeKeys.includes(segments[0] as keyof typeof routes);
+const pathSegments = hasLocalePrefix ? segments.slice(1) : segments;
+const baseSegment = pathSegments[0] ?? '';
+const restSegments = pathSegments.slice(1);
+
+const baseKey =
+  baseSegment === ''
+    ? ''
+    : (Object.entries(routes[locale]).find(([, value]) => value === baseSegment)?.[0] ??
+        Object.entries(routes[defaultLang]).find(([, value]) => value === baseSegment)?.[0] ??
+        baseSegment);
+
+const buildLocalizedPath = (targetLocale: keyof typeof routes) => {
+  const routeBase =
+    baseKey && routes[targetLocale][baseKey as keyof typeof routes.en] !== undefined
+      ? routes[targetLocale][baseKey as keyof typeof routes.en]
+      : baseSegment;
+  const localizedBase = baseKey ? routeBase : '';
+  const rest = restSegments.length ? `/${restSegments.join('/')}` : '';
+  const path = localizedBase ? `/${localizedBase}${rest}` : rest || '/';
+  return showDefaultLang || targetLocale !== defaultLang ? `/${targetLocale}${path}` : path;
+};
+
+const canonicalPath = buildLocalizedPath(locale);
+const canonicalUrl = new URL(canonicalPath, site);
+const alternateUrls = localeKeys.map((localeKey) => ({
+  locale: localeKey,
+  url: new URL(buildLocalizedPath(localeKey), site),
+}));
+const xDefaultUrl = new URL(buildLocalizedPath(defaultLang), site);
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Gabriel Vinhaes de Lima',
+  url: canonicalUrl.toString(),
+  jobTitle: t('meta.role'),
+  email: contactEmail,
+  telephone: contactPhone,
+  sameAs: [linkedInLink, githubLink],
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Brasilia',
+    addressRegion: 'DF',
+    addressCountry: 'BR',
+  },
+};
+const serviceJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: t('meta.service'),
+  description,
+  url: canonicalUrl.toString(),
+  areaServed: 'BR',
+  founder: {
+    '@type': 'Person',
+    name: 'Gabriel Vinhaes de Lima',
+  },
+  sameAs: [linkedInLink, githubLink],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: contactPhone,
+    email: contactEmail,
+    contactType: 'sales',
+  },
+};
+const structuredData = JSON.stringify([personJsonLd, serviceJsonLd]);
 ---
 
 <!doctype html>
@@ -29,6 +109,16 @@ const githubLink = 'https://github.com/Gabrielgvl';
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl.toString()} />
+    <link rel="alternate" hrefLang="x-default" href={xDefaultUrl.toString()} />
+    {alternateUrls.map(({ locale: localeKey, url }) => (
+      <link
+        rel="alternate"
+        hrefLang={hrefLangMap[localeKey] ?? localeKey}
+        href={url.toString()}
+      />
+    ))}
+    <script type="application/ld+json" is:inline set:html={structuredData} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
@@ -67,7 +157,7 @@ const githubLink = 'https://github.com/Gabrielgvl';
           </div>
           <div class="flex flex-wrap items-center gap-4">
             <a
-              href="mailto:gabriel@delima.net.br"
+              href={`mailto:${contactEmail}`}
               class="inline-flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-accent-500"
             >
               <EmailIcon class="h-4 w-4" />
@@ -83,7 +173,7 @@ const githubLink = 'https://github.com/Gabrielgvl';
               {t('footer.whatsapp')}
             </a>
             <a
-              href="https://linkedin.com/in/gabriel-vinhaes"
+              href={linkedInLink}
               target="_blank"
               rel="noopener noreferrer"
               class="inline-flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-accent-500"

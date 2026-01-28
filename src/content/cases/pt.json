@@ -4,8 +4,15 @@
     "company": "Courier",
     "headline": "Redução de custo sem travar o crescimento",
     "context": "Empresa em crescimento com custos operacionais subindo junto com o volume.",
-    "problem": "Custos aumentando mais rápido que a receita e desperdícios escondidos.",
-    "solution": "Organizei processos e métricas para guiar decisões e reduzir desperdícios.",
+    "problem": "Custos aumentando mais rápido que a receita e desperdícios escondidos nos fluxos.",
+    "solution": "Modelei custos e cadência operacional para reduzir desperdícios e manter previsibilidade.",
+    "actions": [
+      "Criei modelo de custo por fluxo com KPIs e alertas.",
+      "Removi desperdícios no pipeline e normalizei batches.",
+      "Ajustei autoscaling/limites e instituí revisão quinzenal."
+    ],
+    "timeline": "6 semanas, em dois ciclos curtos.",
+    "beforeAfter": "Antes: custo subindo mais rápido que a receita. Depois: custo operacional -25% com KPIs claros e execução previsível.",
     "result": "Custo operacional -25% com KPIs claros e execução previsível.",
     "metrics": [
       { "value": "-25%", "label": "Custo operacional" },
@@ -20,7 +27,14 @@
     "headline": "Regras complexas sem perder velocidade",
     "context": "Operação em escala com regras de negócio complexas.",
     "problem": "Respostas lentas e risco ao mudar regras.",
-    "solution": "Melhoria de performance e padronização de regras para mudanças seguras.",
+    "solution": "Melhorei performance e criei toolkits compartilhados para regras complexas.",
+    "actions": [
+      "Criei toolkits de regras usados por múltiplos times.",
+      "Refatorei caminhos críticos e cache para reduzir latência.",
+      "Adicionei checks de rollout para mudanças seguras."
+    ],
+    "timeline": "3 ciclos curtos (~6 semanas).",
+    "beforeAfter": "Antes: respostas lentas e mudanças arriscadas. Depois: -10% no tempo de resposta e evolução segura das regras.",
     "result": "Tempo de resposta -10% com evolução segura das regras.",
     "metrics": [
       { "value": "-10%", "label": "Tempo de resposta" },
@@ -35,7 +49,14 @@
     "headline": "Legado entendido em semanas, não meses",
     "context": "Base crítica antiga e difícil de evoluir.",
     "problem": "Tempo alto para entender o sistema e risco nas mudanças.",
-    "solution": "Processo de descoberta estruturado e automações para reduzir o tempo.",
+    "solution": "Estruturei discovery e automações para mapear comportamento legado.",
+    "actions": [
+      "Mapeei regras e fluxos com análise automatizada.",
+      "Criei ambiente reproduzível para validar comportamento legado.",
+      "Defini playbook de discovery e testes de validação."
+    ],
+    "timeline": "4 a 6 semanas.",
+    "beforeAfter": "Antes: mudanças levavam meses de descoberta. Depois: diagnóstico mais rápido e mudanças mais seguras.",
     "result": "Descoberta mais rápida e mudanças mais seguras.",
     "metrics": [
       { "value": "Mais rápido", "label": "Descoberta" },
@@ -50,7 +71,14 @@
     "headline": "Integrações sem retrabalho constante",
     "context": "Integrações e dados gerando manutenção recorrente.",
     "problem": "Custo alto para manter os fluxos funcionando.",
-    "solution": "Simplificação e padronização com mais confiabilidade.",
+    "solution": "Padronizei integrações e aumentei a confiabilidade dos fluxos.",
+    "actions": [
+      "Padronizei contratos de dados e monitoramento.",
+      "Simplifiquei pipelines e reduzi correções manuais.",
+      "Adicionei alertas e rotinas de recuperação."
+    ],
+    "timeline": "5 semanas.",
+    "beforeAfter": "Antes: babysitting constante. Depois: operação previsível com menos manutenção.",
     "result": "Menos manutenção e operação previsível.",
     "metrics": [
       { "value": "Menos", "label": "Manutenção" },

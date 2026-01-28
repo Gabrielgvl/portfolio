@@ -2,10 +2,17 @@
   {
     "slug": "courier-cost-reduction",
     "company": "Courier",
-    "headline": "Reducción de costo sin frenar el crecimiento",
-    "context": "Empresa en crecimiento con costos operativos subiendo con el volumen.",
-    "problem": "Costos aumentando más rápido que los ingresos y desperdicios ocultos.",
-    "solution": "Organicé procesos y métricas para guiar decisiones y reducir desperdicios.",
+    "headline": "Costo abajo sin frenar el crecimiento",
+    "context": "Empresa en crecimiento con costos operativos subiendo junto con el volumen.",
+    "problem": "Costos aumentando más rápido que los ingresos con desperdicios ocultos.",
+    "solution": "Modelé costos y cadencia operativa para recortar desperdicios y mantener previsibilidad.",
+    "actions": [
+      "Creé un modelo de costo por flujo con KPIs y alertas.",
+      "Eliminé desperdicios en el pipeline y normalicé batches.",
+      "Ajusté autoscaling/límites y establecí revisión quincenal."
+    ],
+    "timeline": "6 semanas en dos ciclos cortos.",
+    "beforeAfter": "Antes: costos subiendo más rápido que los ingresos. Después: costo operativo -25% con KPIs claros y ejecución predecible.",
     "result": "Costo operativo -25% con KPIs claros y ejecución predecible.",
     "metrics": [
       { "value": "-25%", "label": "Costo operativo" },
@@ -16,11 +23,18 @@
   },
   {
     "slug": "mercado-livre-performance",
-    "company": "Mercado Livre",
+    "company": "Mercado Libre",
     "headline": "Reglas complejas sin perder velocidad",
-    "context": "Operación a gran escala con reglas de negocio complejas.",
+    "context": "Operación a escala con reglas de negocio complejas.",
     "problem": "Respuestas lentas y riesgo al cambiar reglas.",
-    "solution": "Mejoras de rendimiento y estandarización de reglas para cambios seguros.",
+    "solution": "Mejoré el rendimiento y creé toolkits compartidos para reglas complejas.",
+    "actions": [
+      "Construí toolkits de reglas usados por varios equipos.",
+      "Refactoricé rutas críticas y caché para reducir latencia.",
+      "Agregué checks de rollout para cambios más seguros."
+    ],
+    "timeline": "3 ciclos cortos (~6 semanas).",
+    "beforeAfter": "Antes: respuestas lentas y cambios riesgosos. Después: 10% menos tiempo de respuesta y evolución segura de reglas.",
     "result": "Tiempo de respuesta -10% con evolución segura de reglas.",
     "metrics": [
       { "value": "-10%", "label": "Tiempo de respuesta" },
@@ -34,11 +48,18 @@
     "company": "Mirante",
     "headline": "Legado entendido en semanas, no meses",
     "context": "Base crítica antigua y difícil de evolucionar.",
-    "problem": "Alto tiempo para entender el sistema y cambios riesgosos.",
-    "solution": "Proceso de descubrimiento estructurado y automatizaciones para reducir tiempo.",
-    "result": "Descubrimiento más rápido y cambios más seguros.",
+    "problem": "Mucho tiempo para entender el sistema y alto riesgo al cambiarlo.",
+    "solution": "Estructuré el discovery y automatizaciones para mapear el comportamiento legado.",
+    "actions": [
+      "Mapeé reglas y flujos con análisis automatizado.",
+      "Creé un entorno reproducible para validar el legado.",
+      "Definí un playbook de discovery y pruebas de validación."
+    ],
+    "timeline": "4 a 6 semanas.",
+    "beforeAfter": "Antes: cambios tomaban meses de discovery. Después: diagnóstico más rápido y cambios más seguros.",
+    "result": "Discovery más rápido y cambios más seguros.",
     "metrics": [
-      { "value": "Más rápido", "label": "Descubrimiento" },
+      { "value": "Más rápido", "label": "Discovery" },
       { "value": "Más seguro", "label": "Cambios" }
     ],
     "stack": ["Python", "Docker", "AI Agents", "AST/CFG Analysis"],
@@ -47,11 +68,18 @@
   {
     "slug": "varsity-tutors-integrations",
     "company": "Varsity Tutors",
-    "headline": "Integraciones sin retrabajo constante",
+    "headline": "Integraciones sin babysitting constante",
     "context": "Integraciones y datos con mantenimiento recurrente.",
     "problem": "Alto esfuerzo para mantener los flujos funcionando.",
-    "solution": "Simplificación y estandarización con mayor confiabilidad.",
-    "result": "Menos mantenimiento y operación predecible.",
+    "solution": "Estandaricé integraciones y mejoré la confiabilidad de los flujos.",
+    "actions": [
+      "Estandaricé contratos de datos y monitoreo.",
+      "Simplifiqué pipelines y reduje correcciones manuales.",
+      "Agregué alertas y rutinas de recuperación."
+    ],
+    "timeline": "5 semanas.",
+    "beforeAfter": "Antes: babysitting constante. Después: operación predecible con menos mantenimiento.",
+    "result": "Menor costo de mantenimiento y operación predecible.",
     "metrics": [
       { "value": "Menos", "label": "Mantenimiento" },
       { "value": "Predecible", "label": "Operación" }

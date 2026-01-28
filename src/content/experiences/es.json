@@ -1,23 +1,53 @@
 [
   {
-    "title": "Ingeniero de Software Senior",
-    "company": "Mercado Libre",
-    "period": "Septiembre 2021 - Presente",
-    "description": "Lideró iniciativas para mejorar rendimiento, reglas y confiabilidad operativa a escala.",
+    "title": "Platform Engineer",
+    "company": "Courier",
+    "period": "mar/2025 - presente",
+    "description": "Enfocado en confiabilidad, conectividad y pipelines de eventos en la operación digital.",
     "achievements": [
-      "Creó herramientas compartidas para estandarizar reglas críticas.",
-      "Redujo el tiempo de respuesta y aumentó la eficiencia operativa.",
-      "Entregó indicadores para decisiones más seguras.",
-      "Lideró proyectos entre equipos para modernizar flujos críticos.",
-      "Mentoreó personas y difundió buenas prácticas.",
-      "Alineó equipos en estándares y calidad."
+      "WebSockets & Conectividad: corregí errores 400, reestructuré batching y reforcé la capa de conexión con instrumentación, circuit breakers, apagado seguro, pruebas de caos, CI/CD y dual writes.",
+      "Event Log Streaming: rediseñé el pipeline con batching, dual-read en S3 y un reprocesador resiliente, con métricas, autoscaling y rate limiting.",
+      "Plataforma & Infra: mejoré CI/CD con BuildKit/Buildx y cache avanzado (~40% menos tiempo de build), creé módulos IaC en AWS con compliance y apoyé a equipos con documentación y entrenamiento."
     ]
   },
   {
-    "title": "Ingeniero de Software Senior",
+    "title": "Senior Software Engineer",
+    "company": "Mirante Tecnologia (freelance)",
+    "period": "ago/2025 - dic/2025",
+    "description": "Automatización de decisiones y modernización de legado con multiagentes.",
+    "achievements": [
+      "Arquitectura con 10+ agentes para análisis de código, extracción de reglas y validación.",
+      "Entorno reproducible para validar comportamiento legado.",
+      "Modelado de flujo de control/datos para extraer reglas y validar tests."
+    ]
+  },
+  {
+    "title": "Senior Software Engineer",
+    "company": "Mercado Libre",
+    "period": "feb/2023 - jul/2025",
+    "description": "Mejoras de performance, reglas complejas y confiabilidad operacional a escala.",
+    "achievements": [
+      "Toolkits compartidos para reglas complejas usados por múltiples equipos.",
+      "Optimización de performance para reducir latencia en flujos críticos.",
+      "Mejoras de gobernanza y seguridad en cambios de reglas."
+    ]
+  },
+  {
+    "title": "Software Engineer",
+    "company": "Mercado Libre",
+    "period": "sep/2021 - feb/2023",
+    "description": "Sistemas de restricciones logísticas y confiabilidad operacional.",
+    "achievements": [
+      "Evolución de funcionalidades y estabilidad del sistema de restricciones.",
+      "Mejoras de performance en servicios críticos de logística.",
+      "Soporte al diseño de interfaces para gestión de restricciones."
+    ]
+  },
+  {
+    "title": "Senior Software Engineer",
     "company": "Varsity Tutors",
-    "period": "Mayo 2024 - Noviembre 2024",
-    "description": "Enfocado en flujos de datos y estabilidad del sistema a gran escala.",
+    "period": "mayo/2024 - nov/2024",
+    "description": "Flujos de datos y estabilidad del sistema en alta escala.",
     "achievements": [
       "Simplificó integraciones de datos y redujo mantenimiento manual.",
       "Creó utilidades compartidas para acelerar entregas.",
@@ -28,7 +58,7 @@
   {
     "title": "Profesor",
     "company": "UniCEUB",
-    "period": "Julio 2022 - Julio 2024",
+    "period": "jul/2022 - jul/2024",
     "description": "Profesor de lógica y programación web con foco práctico.",
     "achievements": [
       "Dictó cursos para grupos iniciales y avanzados.",
@@ -40,7 +70,7 @@
   {
     "title": "Ingeniero de Software",
     "company": "Lantern",
-    "period": "Septiembre 2021 - Septiembre 2022",
+    "period": "sep/2021 - sep/2022",
     "description": "Lideró la entrega del MVP de una billetera digital.",
     "achievements": [
       "Condujo la entrega de punta a punta de la primera versión.",
@@ -52,19 +82,19 @@
   {
     "title": "Arquitecto de Software",
     "company": "GigaCandanga",
-    "period": "Febrero 2021 - Septiembre 2021",
+    "period": "feb/2021 - sep/2021",
     "description": "Lideró la entrega de un nuevo ERP para un negocio en crecimiento.",
     "achievements": [
       "Diseñó la arquitectura y el plan de entrega.",
       "Construyó módulos clave y aseguró el rendimiento.",
-      "Estructuró infraestructura y pipelines de releases.",
+      "Estructuró infraestructura y pipelines de release.",
       "Condujo revisiones de código y transferencia de conocimiento."
     ]
   },
   {
     "title": "Desarrollador Analista",
     "company": "Ambev Tech",
-    "period": "Octubre 2020 - Septiembre 2021",
+    "period": "oct/2020 - sep/2021",
     "description": "Construyó experiencias de e-commerce escalables y aceleró entregas.",
     "achievements": [
       "Entregó funcionalidades con impacto en conversión.",
@@ -76,7 +106,7 @@
   {
     "title": "Desarrollador Full-stack",
     "company": "Citara Labs",
-    "period": "Agosto 2019 - Abril 2020",
+    "period": "ago/2019 - abr/2020",
     "description": "Entregó aplicaciones orientadas a datos y mejoró la confiabilidad.",
     "achievements": [
       "Construyó productos con múltiples fuentes de datos.",
@@ -88,7 +118,7 @@
   {
     "title": "Desarrollador de Software",
     "company": "Mirante",
-    "period": "Enero 2018 - Julio 2019",
+    "period": "ene/2018 - jul/2019",
     "description": "Mantuvo y evolucionó sistemas empresariales críticos.",
     "achievements": [
       "Entregó un nuevo ERP para una empresa de turismo.",

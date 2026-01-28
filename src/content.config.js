@@ -73,6 +73,9 @@ const casesCollection = defineCollection({
       context: z.string(),
       problem: z.string(),
       solution: z.string(),
+      actions: z.array(z.string()).optional(),
+      timeline: z.string().optional(),
+      beforeAfter: z.string().optional(),
       result: z.string(),
       stack: z.array(z.string()),
       metrics: z.array(

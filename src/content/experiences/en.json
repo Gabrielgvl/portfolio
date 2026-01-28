@@ -1,9 +1,31 @@
 [
   {
+    "title": "Platform Engineer",
+    "company": "Courier",
+    "period": "Mar 2025 - Present",
+    "description": "Focused on reliability, connectivity, and event pipelines for digital operations.",
+    "achievements": [
+      "WebSockets & Connectivity: fixed 400 errors, restructured batching, and strengthened the connection layer with instrumentation, circuit breakers, safe shutdowns, chaos tests, CI/CD, and dual writes.",
+      "Event Log Streaming: redesigned the pipeline with batching, S3 dual-read, and a resilient reprocessor, plus metrics, autoscaling, and rate limiting.",
+      "Platform & Infra: improved CI/CD with BuildKit/Buildx and advanced cache (~40% faster builds), created compliant AWS IaC modules, and supported teams with docs and training."
+    ]
+  },
+  {
+    "title": "Senior Software Engineer",
+    "company": "Mirante Tecnologia (freelance)",
+    "period": "Aug 2025 - Dec 2025",
+    "description": "Decision automation and legacy modernization with multi-agent systems.",
+    "achievements": [
+      "Designed a 10+ agent architecture for code analysis, rule extraction, and validation.",
+      "Built a reproducible environment to validate legacy behavior.",
+      "Modeled control/data flow to extract rules and validate tests."
+    ]
+  },
+  {
     "title": "Senior Software Engineer",
     "company": "Mercado Livre",
-    "period": "September 2021 - Present",
-    "description": "Led initiatives to improve performance, rule management, and operational reliability at scale.",
+    "period": "Feb 2023 - Jul 2025",
+    "description": "Led initiatives to improve performance, rules, and operational reliability at scale.",
     "achievements": [
       "Built shared tooling to standardize critical business rules.",
       "Reduced response time and improved operational throughput.",
@@ -11,6 +33,17 @@
       "Led cross-team projects to modernize critical workflows.",
       "Mentored engineers and shared best practices.",
       "Aligned teams around standards and quality."
+    ]
+  },
+  {
+    "title": "Software Engineer",
+    "company": "Mercado Livre",
+    "period": "Sep 2021 - Feb 2023",
+    "description": "Logistics restriction systems and operational reliability.",
+    "achievements": [
+      "Shipped new features and improved stability of restriction systems.",
+      "Improved performance across critical logistics services.",
+      "Supported UI design for restriction management."
     ]
   },
   {

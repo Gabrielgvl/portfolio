@@ -1,8 +1,30 @@
 [
   {
-    "title": "Engenheiro de Software Sênior",
+    "title": "Platform Engineer",
+    "company": "Courier",
+    "period": "mar/2025 - presente",
+    "description": "Atuação focada em confiabilidade, conectividade e pipelines de eventos na operação digital.",
+    "achievements": [
+      "WebSockets & Conectividade: corrigi erros 400, reestruturei batch e fortalecei a camada de conexão com instrumentação, circuit-breaker, shutdown seguro, testes de caos, CI/CD e escrita dual.",
+      "Event Log Streaming: redesenhei o pipeline com batching, dual-read em S3 e reprocessador resiliente, com métricas, autoscaling e rate limiting.",
+      "Plataforma & Infra: evoluí CI/CD com BuildKit/Buildx e cache avançado (~40% menos tempo de build), criei módulos IaC em AWS com compliance e apoiei times com documentação e treinamento."
+    ]
+  },
+  {
+    "title": "Senior Software Engineer",
+    "company": "Mirante Tecnologia (freelance)",
+    "period": "ago/2025 - dez/2025",
+    "description": "Automação de decisão e modernização de legado com multiagentes.",
+    "achievements": [
+      "Arquitetura com 10+ agentes para análise de código, extração de regras e validação.",
+      "Ambiente reproduzível para execução e validação de comportamento legado.",
+      "Modelagem de fluxo com AST e grafos para extração de regras e testes."
+    ]
+  },
+  {
+    "title": "Senior Software Engineer",
     "company": "Mercado Livre",
-    "period": "Setembro 2021 - Presente",
+    "period": "fev/2023 - jul/2025",
     "description": "Liderou iniciativas para melhorar performance, regras e confiabilidade operacional em escala.",
     "achievements": [
       "Criou ferramentas compartilhadas para padronizar regras críticas.",
@@ -11,6 +33,17 @@
       "Liderou projetos entre times para modernizar fluxos críticos.",
       "Mentorou pessoas e difundiu boas práticas.",
       "Alinhou times em padrões e qualidade."
+    ]
+  },
+  {
+    "title": "Software Engineer",
+    "company": "Mercado Livre",
+    "period": "set/2021 - fev/2023",
+    "description": "Sistemas de restrições logísticas e confiabilidade operacional.",
+    "achievements": [
+      "Evoluiu funcionalidades e estabilidade do sistema de restrições.",
+      "Melhorou performance em serviços críticos de logística.",
+      "Apoiou o design de interfaces para gestão de restrições."
     ]
   },
   {
