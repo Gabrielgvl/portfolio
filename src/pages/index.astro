@@ -22,7 +22,8 @@ const cases = casesEntry?.data ?? [];
 
 const whatsappLink =
   'https://wa.me/5561991716125?text=Ol%C3%A1%2C%20vi%20seu%20site%20e%20gostaria%20de%20conversar';
-const emailLink = 'mailto:gabriel@delima.net.br';
+const emailSubject = encodeURIComponent(t('cta.email_subject'));
+const emailLink = `mailto:gabriel@delima.net.br?subject=${emailSubject}`;
 const casesPath = translatePath('/casos');
 const aboutPath = translatePath('/about');
 ---

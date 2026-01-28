@@ -22,6 +22,8 @@ const contactEmail = 'gabriel@delima.net.br';
 const contactPhone = '+55 61 99171-6125';
 const linkedInLink = 'https://linkedin.com/in/gabriel-vinhaes';
 const githubLink = 'https://github.com/Gabrielgvl';
+const emailSubject = encodeURIComponent(t('cta.email_subject'));
+const emailLink = `mailto:${contactEmail}?subject=${emailSubject}`;
 const site = Astro.site ?? new URL('https://gabriel.delima.net.br');
 const hrefLangMap = {
   en: 'en',
@@ -167,7 +169,7 @@ const structuredData = JSON.stringify([personJsonLd, serviceJsonLd]);
           </div>
           <div class="flex flex-wrap items-center gap-4">
             <a
-              href={`mailto:${contactEmail}`}
+              href={emailLink}
               class="inline-flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-accent-500"
             >
               <EmailIcon class="h-4 w-4" />

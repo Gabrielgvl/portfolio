@@ -10,12 +10,13 @@ import WhatsAppIcon from '../components/icons/WhatsAppIcon.astro';
 const locale = getLocaleFromUrl(Astro.url);
 const t = useTranslations(locale);
 const title = t('contact.meta.title');
+const emailSubject = encodeURIComponent(t('cta.email_subject'));
 
 const contactOptions = [
   {
     title: t('footer.email'),
     value: 'gabriel@delima.net.br',
-    href: 'mailto:gabriel@delima.net.br',
+    href: `mailto:gabriel@delima.net.br?subject=${emailSubject}`,
     icon: EmailIcon,
   },
   {
