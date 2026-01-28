@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Page, { type BlogPost } from '../../blog/[slug].astro';
 
+export const prerender = true;
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ id }) => {

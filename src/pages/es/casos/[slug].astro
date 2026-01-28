@@ -5,6 +5,8 @@ import { getLocaleFromUrl, useTranslations, useTranslatedPath } from '@/i18n/uti
 import { getCollection } from 'astro:content';
 import animationsUrl from '../../../scripts/animations.ts?url';
 
+export const prerender = true;
+
 export async function getStaticPaths() {
   const entries = await getCollection('cases', ({ id }) => id.split('/').at(0) === 'es');
   return entries.flatMap((entry) =>

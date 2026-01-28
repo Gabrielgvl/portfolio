@@ -8,6 +8,8 @@ import avatarImage from '../../assets/avatar.webp';
 import { render } from 'astro:content';
 import { getLocaleFromUrl, useTranslations, useTranslatedPath } from '@/i18n/utils';
 
+export const prerender = true;
+
 const locale = getLocaleFromUrl(Astro.url);
 const t = useTranslations(locale);
 const l = useTranslatedPath(locale);
