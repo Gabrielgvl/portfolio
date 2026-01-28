@@ -1,12 +1,15 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import cloudflare from '@astrojs/cloudflare';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://seu-dominio.com', // Atualize com seu domínio real
+  site: 'https://gabriel.delima.net.br',
+  output: 'server',
+  adapter: cloudflare({ mode: 'directory' }),
   integrations: [
     mdx(),
     sitemap(),

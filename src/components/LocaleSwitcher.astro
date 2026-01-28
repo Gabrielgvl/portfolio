@@ -25,6 +25,7 @@ const route = getRouteFromUrl(Astro.url);
           Object.entries(languages).map(([lang, label]) => (
             <a
               href={translatePath(`/${route ? route : ''}`, lang)}
+              data-locale={lang}
               class={`block px-4 py-2 text-sm ${
                 locale === lang
                   ? 'text-accent-500 dark:text-accent-400 bg-slate-50 dark:bg-slate-800'
@@ -39,3 +40,13 @@ const route = getRouteFromUrl(Astro.url);
     </div>
   </div>
 </div>
+
+<script is:inline>
+  document.querySelectorAll('[data-locale]').forEach((link) => {
+    link.addEventListener('click', () => {
+      const locale = link.getAttribute('data-locale');
+      if (!locale) return;
+      document.cookie = `locale=${locale}; Path=/; Max-Age=31536000; SameSite=Lax`;
+    });
+  });
+</script>
